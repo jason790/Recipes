@@ -146,7 +146,9 @@ INSTALLED_APPS = [
     'djangocms_teaser',
     'djangocms_video',
     'reversion',
-    'recipes'
+    'tinymce',
+    'recipes',
+    'posts',
 ]
 
 LANGUAGES = (
@@ -196,5 +198,5 @@ DATABASES = {
 }
 
 MIGRATION_MODULES = {
-    
+
 }
