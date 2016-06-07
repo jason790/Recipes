@@ -3,20 +3,64 @@
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8" / />
-    <title>{% block title %}This is my new project home page{% endblock title %}</title>
+    <title>{% block title %}{% page_attribute "title" %}{% endblock title %}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="p:domain_verify" content="fc049434e06ac221cc6a5e0da33e1686"/>
+    <meta name="google-site-verification" content="3hkTmNlbzlQuFkToggQlOVofL-D_VN3zn7SuUOwCQrw" />
+
+    <meta name="description" content="{% page_attribute 'meta_description' %}" />
+    <meta property="og:site_name" content="Pesach Is A Holiday" />
+    <meta property="og:title" content="{% page_attribute 'picture' %}" />
+    <meta property="og:description" content="{% page_attribute 'meta_description' %}" />
+    <meta property="og:picture" content="{% page_attribute 'picture' %}" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@pesachis" />
+    <meta name="twitter:creator" content="@pesachis" />
+
+    <meta name="msapplication-TileImage" content="{% static 'images/cropped-Headline-Logo-270x270.png' %}" />
+    <link rel="icon" href="{% static 'images/cropped-Headline-Logo-32x32.png' %}" sizes="32x32" />
+    <link rel="icon" href="{% static 'images/cropped-Headline-Logo-192x192.png' %}" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="{% static 'images/cropped-Headline-Logo-180x180.png' %}" />
+    <link rel="alternate" type="application/rss+xml" title="Pesach Is A Holiday &raquo; חגיגה של שבתות וחגים A Celebration of Shabbat and Holidays Comments Feed" href="http://www.pesachisaholiday.com/homepage/feed/" />
+
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
     {# load cms stylesheets #}
     {% render_block "css" %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
     {% cms_toolbar %}
-    <div class="container">
-      <ul class="nav">
-          {% show_menu 0 100 100 100 %}
-      </ul>
-      {% block content %}{% endblock content %}
+    <div id="top" class="navbar" role="navigation">
+      <div class="container">
+        <div class="logo">
+          <a href="/">
+            <img src="{% static 'images/Blog-Logo-Color.png' %}" />
+          </a>
+        </div>
+        <nav class="menu">
+          <ul>
+            {% show_menu 0 100 100 100 %}
+          </ul>
+        </nav>
+        <div class="search-menu">
+          <object type="image/svg+xml" data="{% static 'images/ic_search_white_24px.svg' %}" class="icon-search">
+            <img src="{% static 'images/ic_search_white_24px.svg' %}" class="icon-search" />
+          </object>
+        </div>
+      </div>
     </div>
+    <!-- end top -->
+
+    {% block content %}{% endblock %}
+
+    <footer id="footer">
+      <div class="container">
+        <div class="credits">
+          <p>Copyright © 2016 Pesach is a Holiday - Created by <a href="http://conpanna.net/">ConPanna</a></p>
+        </div>
+      </div>
+    </footer>
     {% render_block "js" %}
   </body>
 </html>

@@ -18,11 +18,11 @@ def index(request):
 
     return HttpResponse(template.render(context, request))
 
-def show(request):
+def show(request, slug):
     """
     Show a single recipe
     """
-    recipe = Post.objects.get(pk=id)
+    recipe = Post.objects.get(slug=slug)
     template = loader.get_template('recipes/show.html')
     context = {
         'title': recipe.title,

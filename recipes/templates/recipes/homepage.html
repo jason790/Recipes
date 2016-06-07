@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="banner">
+  <div class="container">
+    <a href="https://www.youtube.com/channel/UCNHENYzY6rctjtZP_Gn3avw/live">
+      <img src="{% static 'images/banner_stream.jpg' %}" />
+    </a>
+  </div>
+</div>
+<!-- end banner -->
+
+<!-- . -->
+<!-- start test -->
+<!-- . -->
+<div id="test">
+  <div class="container">
+    <h2>{% page_attribute "title" %}</h2>
+    <p>page_attribute Description: {% page_attribute "description" %}</p>
+    <p>page_attribute Picture: {% page_attribute "picture" %}</p>
+
+  <p>Placeholder Description</p>
+  {% placeholder 'description' %}
+
+
+  <p>Placeholder Content</p>
+  {% placeholder 'content' %}
+
+
+  </div>
+</div>
+<!-- . -->
+<!-- end test -->
+<!-- . -->
+
+<section>
+  <div class="container">
+    <div class="headline">
+      <h3 class="title">Featured Recipes</h3>
+    </div>
+    <div class="posts-thumbnails">
+
+      <div class="post-thumbnail">
+        <div class="picture">
+          <a href="">
+            <img src="images/Post-Thumbnail-2-360x240.jpg" />
+          </a>
+        </div>
+        <h4 class="title">
+          <a href="">
+            Is This Replacing Makeup? Is This Replacing Makeup?
+          </a>
+        </h4>
+        <div class="date">
+          <a href="">November 12th, 2015</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- end post-thumbnails -->
+
+  </div>
+</section>
+<!-- end section -->
+
+{% endblock %}
