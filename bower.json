@@ -1,0 +1,24 @@
+{
+  "name": "recipes",
+  "description": "Recipes website and app",
+  "main": "Gruntfile.coffee",
+  "authors": [
+    "ConPanna"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ConPanna/Recipes",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "milligram": "^1.1.0",
+    "jquery": "^2.2.3",
+    "babel": "*",
+    "react": "^15.1.0"
+  }
+}

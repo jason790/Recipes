@@ -16,17 +16,17 @@ class PostsMenu(CMSAttachMenu):
         """
 
         nodes = []
-        for post in Post.objects.all():
-            # the menu tree consists of NavigationNode instances
-            # Each NavigationNode takes a label as its first argument, a URL as
-            # its second argument and a (for this tree) unique id as its third
-            # argument.
-            node = NavigationNode(
-                post.title,
-                reverse('show', args=(post.id, )),
-                blog.id
-            )
-            nodes.append(node)
+        # for post in Post.objects.all():
+        #     # the menu tree consists of NavigationNode instances
+        #     # Each NavigationNode takes a label as its first argument, a URL as
+        #     # its second argument and a (for this tree) unique id as its third
+        #     # argument.
+        #     node = NavigationNode(
+        #         post.title,
+        #         reverse('show', args=(post.id, )),
+        #         blog.id
+        #     )
+        #     nodes.append(node)
         return nodes
 
 menu_pool.register_menu(PostsMenu)

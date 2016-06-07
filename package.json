@@ -1,0 +1,30 @@
+{
+  "name": "pesachis",
+  "version": "1.0.0",
+  "description": "Pesach is a Holiday",
+  "main": "Gruntfile.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ConPanna",
+  "license": "ISC",
+  "dependencies": {
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^6.0.0",
+    "grunt-contrib-coffee": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-hash": "^0.5.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "grunt-babel": "^6.0.0"
+  }
+}
