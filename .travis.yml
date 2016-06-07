@@ -1,0 +1,19 @@
+language: python
+python:
+  - "3.5"
+
+before_install:
+    - sudo apt-get install libsqlite3-dev sqlite3 bzip2 libbz2-dev
+    - sudo apt-get install python3
+    - sudo pip install --upgrade virtualenv
+
+# command to install dependencies
+# install: "pip install --user -r requirements.txt"
+
+# install: "source env/bin/activate"
+
+# command to run tests
+script: nosetests
+
+virtualenv:
+    system_site_packages: false
