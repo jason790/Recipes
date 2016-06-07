@@ -146,7 +146,9 @@ INSTALLED_APPS = [
     'djangocms_teaser',
     'djangocms_video',
     'reversion',
-    'tinymce',
+    'filer',
+    'meta',
+    'djangocms_page_meta',
     'recipes',
     'posts',
 ]

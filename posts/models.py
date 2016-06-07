@@ -1,5 +1,5 @@
 from django.db import models
-from tinymce.models import HTMLField
+from meta.models import ModelMeta
 
 # Create your models here.
 class Post(models.Model):
@@ -14,7 +14,7 @@ class Post(models.Model):
     excerpt = models.CharField(max_length=255)
     picture = models.CharField(max_length=255)
 
-    body = HTMLField()
+    body = models.TextField()
     views = models.IntegerField(default=0)
     shares = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
@@ -22,6 +22,12 @@ class Post(models.Model):
 
     created_at = models.DateTimeField('date published')
     updated_at = models.DateTimeField('date updated')
+
+    _metadata = {
+        'title': title,
+        'description': description,
+        'excerpt': excerpt
+    }
 
     def get_absolute_url(self):
         return reverse('post:title', kwargs={

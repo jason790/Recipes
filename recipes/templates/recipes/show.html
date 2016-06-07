@@ -1,1 +1,137 @@
-/recipes/show
+{% extends "base.html" %}
+{% block content %}
+<div id="content">
+  <div class="container">
+
+    <div class="main-content" role="main">
+
+      <article class="post single">
+        <h1 class="title">{{recipe.title}}</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li>
+              <a href="/">Peasch is a Holiday</a>
+            </li>
+            <li>
+              <a href="/recipes">Recipes</a>
+            </li>
+          </ol>
+        </nav>
+        <div class="picture">
+          <img src="{{recipe.picture}}" alt="{{recipe.title}}" />
+        </div>
+        <div class="meta">
+              <p>
+                  By <strong>{{recipe.author}}</strong>
+                  on <strong>{{recipe.created_at}}</strong>
+                  | <span class="category">
+                      <a href="/recipes">Recipes</a>
+                    </span>
+              </p>
+        </div>
+        <h2 class="description">{{recipe.excerpt}}</h2>
+        <p>A refreshing, summer-y dessert, made with fresh fruit and no sweetener of any kind.</p>
+        <p>Sometimes, the simplest dessert is the best. When it&#8217;s hot and humid outside, a fancy triple-chocolate layered cake might not be much of a comfort food. On such days, the simplicity of berries in balsamic vinegar is more appreciated.</p>
+        <p><img class="alignnone size-large wp-image-312" src="http://www.pesachisaholiday.com/wp-content/uploads/2016/06/2-1024x683.jpg" alt="Strawberries and berries" width="1024" height="683" srcset="http://www.pesachisaholiday.com/wp-content/uploads/2016/06/2-1024x683.jpg 1024w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/2-300x200.jpg 300w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/2-768x512.jpg 768w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/2-360x240.jpg 360w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/2.jpg 1600w" sizes="(max-width: 1024px) 100vw, 1024px" /></p>
+        <p>The balsamic vinegar brings out the flavor in the berries, and the resulted flavor is a nice balance of tart and sweet. If you never tried it before, you&#8217;d be pleasantly surprised with this recipe. It can be made ahead of time, even a day or two ahead. Though the preparation is very fast, the berries do need to be marinated for a little while, so anyway, don&#8217;t plan on making it at the last minute. I think that marinating for 1 hour on the counter is a good time. If you decided to make it ahead of time and leave in the refrigerator for few hours, do take it out of the refrigerator half an hour or so before serving, so it&#8217;s not so cold- the cold temperature will mute the flavor.</p>
+        <p><img class="alignnone size-large wp-image-315" src="http://www.pesachisaholiday.com/wp-content/uploads/2016/06/41-1024x683.jpg" alt="4(1)" width="1024" height="683" srcset="http://www.pesachisaholiday.com/wp-content/uploads/2016/06/41-1024x683.jpg 1024w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/41-300x200.jpg 300w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/41-768x512.jpg 768w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/41-360x240.jpg 360w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/41.jpg 1600w" sizes="(max-width: 1024px) 100vw, 1024px" /></p>
+        <h2><span style="text-decoration: underline;">Berries in Balsamic Vinegar</span></h2>
+        <div class="ingredients"></p>
+        <h3>Ingredients</h3>
+        <ul>
+        <li>1 c. Strawberries, washed well and sliced</li>
+        <li>2 c. blueberries</li>
+        <li>1/2 Tbs. balsamic vinegar</li>
+        </ul>
+        <h3>Method</h3>
+        <p>Combine all ingredients in a beautiful bowl. Toss gently to mix.</p>
+        <p>Let rest and marinate, covered, for an hour on the counter, or refrigerate if marinating for few hours.<br />
+        </div>
+        <p style="text-align: right;">קנוח מרענן וקיצי על בסיס פירות ללא ממתיק משום סוג.</p>
+        <p style="text-align: right;">לפעמים הקנוח הכי פשוט הוא הכי מתאים. כשבחוץ שרב והלחות גבוהה, עוגת שוקולד בקצפת היא לא תמיד הקנוח הכי נחשק. בימים כאלו, גוברת ההערכה לפשטות שבקנוח פירות בחומץ בלסמי.</p>
+        <p style="text-align: right;"><img class="alignnone size-large wp-image-314" src="http://www.pesachisaholiday.com/wp-content/uploads/2016/06/1-1024x683.jpg" alt="1" width="1024" height="683" srcset="http://www.pesachisaholiday.com/wp-content/uploads/2016/06/1-1024x683.jpg 1024w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/1-300x200.jpg 300w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/1-768x512.jpg 768w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/1-360x240.jpg 360w, http://www.pesachisaholiday.com/wp-content/uploads/2016/06/1.jpg 1600w" sizes="(max-width: 1024px) 100vw, 1024px" /></p>
+        <p style="text-align: right;">החומץ הבלסמי מעשיר את הטעם של התותים והאוכמניות והתוצאה היא טעם מאוזן של חמצמץ ומתוק. אם מעולם לא נסית מתכון כזה, תופתעי לטובה מהקנוח. את המתכון אפשר להכין מראש, אפילו יום-יומים מראש. למרות שההכנה אורכת רק רגעים ספורים, הפירות צריכים להשאר זמן מה בחומץ, אז אל תתכנני להכין את הקנוח ברגע האחרון. נראה לי ששעה בטמפרטורת החדר היא זמן טוב למתכון. אם החלטת להכין מראש ולשמור במקרר למשך מספר שעות, הוציאי את הקנוח מהמקרר כחצי שעה לפני ההגשה על מנת שלא יהיה כל כך קר בזמן ההגשה- הקור עשוי לפגום בטעם.</p>
+        <p style="text-align: right;">אני משתמשת בתותים ואוכמניות, אבל אפשר לנסות עם גודגדנים, דובדבנים, ושאר פירות יער.</p>
+        <h2 style="text-align: right;"><span style="text-decoration: underline;">תותים ואוכמניות בחומץ בלסמי</span></h2>
+        <h3 style="text-align: right;">מצרכים</h3>
+        <p style="text-align: right;">כוס תותים מנוקים ופרוסים</p>
+        <p style="text-align: right;">שתי כוסות אוכמניות</p>
+        <p style="text-align: right;">חצי כף חומץ בלסמי</p>
+        <h3 style="text-align: right;">אופן ההכנה</h3>
+        <p style="text-align: right;">ערבבי בעדינות את כל המצרכים בקערה יפה.</p>
+        <p style="text-align: right;">כסי והניחי בטמפרטורת החדר כשעה לפני ההגשה, או במקרר למשך מספר שעות.</p>
+      </article>
+      <!-- end article -->
+
+    </div>
+    <!-- end main content -->
+
+    <aside id="sidebar">
+
+      <div class="widget">
+        <h4 class="title">Follow Us</h4>
+        <p>Get to know us on social media.</p>
+        <ul class="social-icons">
+          <li>
+            <a href="https://www.youtube.com/channel/UCNHENYzY6rctjtZP_Gn3avw">
+              <i class="fa fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://vine.co/u/1334742438115475456">
+              <i class="fa fa-vine"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/pesachis">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.pinterest.com/Pesachis/">
+              <i class="fa fa-pinterest"></i>
+            </a>
+          </li>
+          <li>
+            <a href="http://pesachis.tumblr.com">
+              <i class="fa fa-tumblr"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/pesachis/">
+              <i class="fa fa-instagram"></i>
+            </a>
+          </li>
+          <!-- <li>
+            <a href="">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li> -->
+        </ul>
+      </div>
+
+      <div class="widget form">
+        <h3 class="title">Subscribe To Our Newsletter</h3>
+        <p>Recieve new recipes to your inbox and get notified when there is something good that happens.</p>
+        <form action="" method="post">
+          <fieldset>
+            <div class="field">
+              <input type="text" placeholder="Full name" />
+            </div>
+            <div class="field">
+              <input type="email" placeholder="username@email.com" />
+            </div>
+            <div class="actions">
+              <input type="submit" value="Subscribe" />
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </aside>
+    <!-- end sidebar -->
+
+  </div>
+  <!-- end container -->
+</div>
+<!-- end content -->
+{% endblock %}
