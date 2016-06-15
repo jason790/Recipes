@@ -201,7 +201,7 @@ DATABASES = {
         'CONN_MAX_AGE': 0,
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': os.environ.get('DATABASE_HOST'),
-        'NAME': 'recipes',
+        'NAME': os.environ.get('DATABASE_NAME'),
         'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
         'PORT': 5433,
         'USER': os.environ.get('DATABASE_HOST')
