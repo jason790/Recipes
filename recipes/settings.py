@@ -200,11 +200,11 @@ DATABASES = {
     'staging': {
         'CONN_MAX_AGE': 0,
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': '178.62.53.206',
+        'HOST': os.enviorn.get('DATABASE_HOST'),
         'NAME': 'recipes',
-        'PASSWORD': 12345678,
+        'PASSWORD': os.enviorn.get('DATABASE_PASSWORD'),
         'PORT': 5433,
-        'USER': 'rye'
+        'USER': os.enviorn.get('DATABASE_HOST')
     }
 }
 

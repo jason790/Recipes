@@ -22,3 +22,4 @@ Pillow>=2.3
 django-sekizai>=0.7
 six
 djangocms-page-meta
+django-tinymce
