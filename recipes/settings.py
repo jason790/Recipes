@@ -151,6 +151,7 @@ INSTALLED_APPS = [
     'djangocms_page_meta',
     'recipes',
     'posts',
+    'subscribers',
 ]
 
 LANGUAGES = (

@@ -7,6 +7,8 @@ from django.conf.urls import *  # NOQA
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.shortcuts import redirect
+from django.views.generic.base import RedirectView
 
 admin.autodiscover()
 
@@ -17,6 +19,9 @@ urlpatterns = i18n_patterns('',
     url(r'^select2/', include('django_select2.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^recipes/', include('posts.urls')),
+    url(r'^api/$', RedirectView.as_view(url='/')),
+    url(r'^api/v1/?$', RedirectView.as_view(url='/')),
+    url(r'^api/v1/subscribers/', include('subscribers.urls')),
     url(r'^', include('cms.urls')),
 )
 

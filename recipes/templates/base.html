@@ -52,7 +52,176 @@
     </div>
     <!-- end top -->
 
-    {% block content %}{% endblock %}
+    {% block content %}
+    <div id="banner">
+      <div class="container">
+        <a href="https://www.youtube.com/channel/UCNHENYzY6rctjtZP_Gn3avw/live">
+          <img src="images/banner_stream.jpg" />
+        </a>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="headline">
+          <h3 class="title">Featured Recipes</h3>
+        </div>
+        <div class="posts-thumbnails">
+
+          <div class="post-thumbnail">
+            <div class="picture">
+              <a href="">
+                <img src="images/Post-Thumbnail-2-360x240.jpg" />
+              </a>
+            </div>
+            <h4 class="title">
+              <a href="">
+                Is This Replacing Makeup? Is This Replacing Makeup?
+              </a>
+            </h4>
+            <div class="date">
+              <a href="">November 12th, 2015</a>
+            </div>
+          </div>
+          <div class="post-thumbnail">
+            <div class="picture">
+              <a href="">
+                <img src="images/Post-Thumbnail-2-10-360x240.jpg" />
+              </a>
+            </div>
+            <h4 class="title">
+              <a href="">
+                Is This Replacing Makeup?
+              </a>
+            </h4>
+            <div class="date">
+              <a href="">November 12th, 2015</a>
+            </div>
+          </div>
+          <div class="post-thumbnail">
+            <div class="picture">
+              <a href="">
+                <img src="images/Post-Thumbnail-360x240.jpg" />
+              </a>
+            </div>
+            <h4 class="title">
+              <a href="">
+                Is This Replacing Makeup?
+              </a>
+            </h4>
+            <div class="date">
+              <a href="">November 12th, 2015</a>
+            </div>
+          </div>
+
+        </div>
+        <!-- end post-thumbnails -->
+
+      </div>
+    </section>
+    <!-- end section -->
+
+    <div id="content">
+      <div class="container">
+
+        <div class="main-content" role="main">
+          <article class="post featured single">
+            <figure>
+              <img src="images/live-streaming-recipes-1.jpg" title="Live Streaming My Kitchen" alt="Live Streaming My Kitchen" />
+            </figure>
+            <h1 class="title">Live Streaming My Kitchen</h1>
+            <!-- <h1 class="title">היכן למצוא מתכונים בריאים ומהירים להכנה</h1> -->
+            <div class="video">
+              <!-- <img src="http://demo.wpzoom.com/foodica/files/2013/01/FFF_4561-750x500.jpg" /> -->
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/O5a7IE7P8_c" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <!-- <h4 class="description">
+              Gwen Lawrence, the yoga coach for the New York Giants who has also worked for the New York Rangers, the New York Knicks, and New York Yankee players including Alex Rodriguez, as well as New York City Football Club and many other athletes and celebrities, demonstrates 8 weight-training moves to strengthen your yoga practice.
+            </h4> -->
+            <p>As someone who practices yoga and lifts weights (I even created a hybrid workout that combines the two in my book Body Sculpting with Yoga: The Revolutionary Way to Sculpt and Shape Your Body), I believe that weight training can enhance the benefits of yoga. </p>
+          </article>
+        </div>
+        <!-- end main content -->
+
+        <aside id="sidebar">
+
+          <div class="widget about">
+            <h4 class="title">Peasch Is A Holiday</h4>
+            <img src="images/avatar.jpg" />
+            <div class="description rtl">
+              <p>מתכונים טעימים לשבתות, חגים ויום-יום בשידור ישיר מהמטבח שלנו. הצטרפו לקהילה שלנו, למדו ושתפו מתכונים טעימים ובריאים.</p>
+            </div>
+          </div>
+
+          <div class="widget">
+            <h4 class="title">Follow Us</h4>
+            <p>Get to know us on social media.</p>
+            <ul class="social-icons">
+              <li>
+                <a href="https://www.youtube.com/channel/UCNHENYzY6rctjtZP_Gn3avw">
+                  <i class="fa fa-youtube"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://vine.co/u/1334742438115475456">
+                  <i class="fa fa-vine"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/pesachis">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.pinterest.com/Pesachis/">
+                  <i class="fa fa-pinterest"></i>
+                </a>
+              </li>
+              <li>
+                <a href="http://pesachis.tumblr.com">
+                  <i class="fa fa-tumblr"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/pesachis/">
+                  <i class="fa fa-instagram"></i>
+                </a>
+              </li>
+              <!-- <li>
+                <a href="">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li> -->
+            </ul>
+          </div>
+
+          <div id="widgetSubscriptionForm" class="widget form">
+            <!-- <h3>Subscribe To Our Newsletter</h3> -->
+            <h3 class="title">React Will Load Here</h3>
+            <p>Recieve new recipes to your inbox and get notified when there is something good that happens.</p>
+            <form action="" method="post">
+              <fieldset>
+                <div class="field">
+                  <input type="text" placeholder="Full name" />
+                </div>
+                <div class="field">
+                  <input type="email" placeholder="username@email.com" />
+                </div>
+                <div class="actions">
+                  <input type="submit" value="Subscribe" />
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </aside>
+        <!-- end sidebar -->
+
+      </div>
+      <!-- end container -->
+    </div>
+    <!-- end content -->
+
+    {% endblock %}
 
     <footer id="footer">
       <div class="container">
