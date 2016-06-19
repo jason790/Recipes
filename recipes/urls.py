@@ -19,9 +19,9 @@ urlpatterns = i18n_patterns('',
     url(r'^select2/', include('django_select2.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^recipes/', include('posts.urls')),
-    url(r'^api/$', RedirectView.as_view(url='/')),
-    url(r'^api/v1/?$', RedirectView.as_view(url='/')),
     url(r'^api/v1/subscribers/', include('subscribers.urls')),
+    url(r'^api/v1/?$', RedirectView.as_view(url='/')),
+    url(r'^api/$', RedirectView.as_view(url='/')),
     url(r'^', include('cms.urls')),
 )
 

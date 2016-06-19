@@ -67,6 +67,11 @@ module.exports = (grunt) ->
           "src/css/style.scss"
         ]
         tasks: ["sass"]
+      babel:
+        files: [
+          "src/js/main.js"
+        ]
+        tasks: ["babel:jsx"]
 
     concat:
       dev:

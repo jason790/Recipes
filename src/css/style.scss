@@ -16,6 +16,8 @@ $primaryColor: #6bc04b;
 // $menuLinkColor: #9ba098;
 $menuLinkColor: #333;
 $topMenuHeight: 68px;
+$menuBackgroundColor: #ee70bc;
+$menuLinkBorderColor: #faaada;
 
 $footerBackground: #b8c5b1;
 $footerBackground: #222;
@@ -33,6 +35,8 @@ $mobile: new-breakpoint(max-width 480px 4);
 //    Navigation
 //    Header
 //    Content
+//      Article
+//      Sharing
 //    Related Stories
 //    Footer
 //    Forms
@@ -102,10 +106,10 @@ nav{
     padding: 0;
   }
 }
-// space for the panel
-.cms-toolbar-expanded{
+// space for wp-admin panel
+.admin-bar{
   .navbar{
-    top: 45px;
+    top: 32px;
   }
 }
 .navbar{
@@ -116,6 +120,44 @@ nav{
   top: 0px;
   width: 100%;
   z-index: 999;
+  @include transition(opacity 0.15s $ease-out-cubic);
+
+  &.opened{
+    ul{
+      background: $menuBackgroundColor;
+      border-bottom: 1px solid $menuLinkBorderColor;
+      border-top: 1px solid $menuLinkBorderColor;
+      height: auto;
+      opacity: 1;
+      position: absolute;
+      right: 0;
+      top: 70px;
+      visibility: visible;
+      width: 100%;
+
+      @include transition(opacity 0.15s $ease-out-cubic);
+
+      @include media($laptop){
+        display: block;
+      }
+
+      li{
+        border-bottom: 2px solid $menuLinkBorderColor;
+        display: block;
+
+        &:hover{
+          background-color: $menuLinkBorderColor;
+        }
+
+        a{
+          color: #fff;
+          font-weight: bold;
+          text-align: center;
+
+        }
+      }
+    }
+  }
 
   a{
     color: $menuLinkColor;
@@ -124,9 +166,17 @@ nav{
   ul{
     vertical-align: middle;
 
+    @include media($laptop){
+      height: 0px;
+      opacity: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+
     li{
       display: inline;
       line-height: $topMenuHeight;
+      text-align: center;
 
       a{
         padding: 10px;
@@ -141,6 +191,11 @@ nav{
     position: relative;
     top: 4px;
 
+    @include media($laptop){
+      left: 10px;
+      margin-right: 0;
+    }
+
     a{
       display: block;
       text-decoration: none;
@@ -149,6 +204,36 @@ nav{
 
   .menu{
     float: left;
+
+    @include media($laptop){
+      float: none;
+    }
+  }
+
+  .navbar-toggle{
+    display: none;
+
+    @include media($laptop){
+      display: block;
+      float: right;
+      position: relative;
+      right: 0px;
+      top: 0px;
+    }
+
+    button{
+      background: #fff;
+      color: $menuBackgroundColor;
+      font-size: em(24);
+      padding: 20px;
+      @include transition(opacity 0.3s $ease-out-cubic);
+
+      &.opened{
+        @include transition(opacity 0.3s $ease-out-cubic);
+        @include transform(rotate(90deg));
+      }
+    }
+
   }
 
   .search-menu{
@@ -368,31 +453,6 @@ nav{
 
     ul.social-icons{
 
-      .fa-facebook{
-        background-color: #2c5697;
-      }
-      .fa-twitter{
-        background-color: #6babe5;
-      }
-      .fa-instagram{
-        background-color: #262626;
-      }
-      .fa-pinterest{
-        background-color: #cb3725;
-      }
-      .fa-youtube{
-        background-color: #e1261c;
-      }
-      .fa-vimeo{
-        background-color: #009bdf;
-      }
-      .fa-vine{
-        background-color: #00c18c;
-      }
-      .fa-tumblr{
-        background-color: #131e29;
-      }
-
       li{
         display: inline-block;
         margin: 4px;
@@ -439,6 +499,21 @@ nav{
       font-size: em(38);
     }
 
+    img{
+      height: 100%;
+    }
+
+  }
+
+  &.featured{
+    .title{
+      font-size: em(18);
+      text-align: center;
+    }
+    iframe{
+      display: block;
+      margin: 0 auto 10px 0;
+    }
   }
 
   .meta{
@@ -525,6 +600,77 @@ nav{
   }
 }
 
+//
+//  Sharing
+//
+.sharing{
+  font-size: em(12);
+  padding: 20px 0;
+  margin: 40px 0;
+
+  .title{
+    border-top: 2px solid #e1e5e1;
+    display: inline-block;
+    padding: 10px;
+  }
+
+  a{
+    color: #fff;
+    padding: 10px;
+    @include transition(all 0.3s $ease-in-cubic);
+
+    &:hover{
+      @include transform(translateY(-4px));
+      @include transition(all 0.15s $ease-out-cubic);
+    }
+
+    strong{
+      margin-left: 4px;
+    }
+
+  }
+
+  ul{
+    li{
+      display: inline-block;
+    }
+  }
+}
+.fa-facebook{
+  background-color: #2c5697;
+}
+.fa-twitter{
+  background-color: #6babe5;
+}
+.fa-instagram{
+  background-color: #262626;
+}
+.fa-pinterest{
+  background-color: #cb3725;
+}
+.fa-youtube{
+  background-color: #e1261c;
+}
+.fa-vimeo{
+  background-color: #009bdf;
+}
+.fa-vine{
+  background-color: #00c18c;
+}
+.fa-tumblr{
+  background-color: #131e29;
+}
+.fa-stumbleupon{
+  background-color: #ff2200;
+}
+.fa-reddit{
+  background-color: #00c6fd;
+}
+.fa-google-plus-official,
+.fa-google{
+  background-color: #f23129;
+}
+
 section{
   background: #fff;
 
@@ -575,7 +721,6 @@ section{
     }
     .date{
       color: #6a6b6a;
-      display: block;
       text-align: center;
     }
   }
@@ -626,7 +771,7 @@ section{
       outline: none;
       padding: ($base-spacing / 4) ($gutter / 2);
       text-decoration: none;
-      transition: all 0.2s ease-in-out;
+      @include transition(all 0.15s ease-in-out);
     }
     a{
       color: $pagination-color;
