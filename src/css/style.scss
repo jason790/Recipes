@@ -840,20 +840,23 @@ section{
     }
   }
 
-  .footer-links{
+  a[class^=fa]{
+    background: none;
+  }
+
+  .columns{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: $base-spacing;
 
-    .footer-logo {
-        margin-bottom: 2em;
-        text-align: center;
+    .column{
+      @include span-columns(1 of 4);
 
-        img {
-          height: 3em;
-        }
+      &:nth-child(3){
+        @include omega();
       }
+    }
 
     p{
       color: $footer-disclaimer-color;
@@ -874,7 +877,6 @@ section{
     li {
       line-height: 1.5em;
       list-style: none;
-      text-align: center;
 
       a{
         color: $footer-link-color;
@@ -900,7 +902,6 @@ section{
     }
   }
 }
-
 //
 // Forms
 //

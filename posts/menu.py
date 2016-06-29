@@ -8,7 +8,7 @@ from menus.menu_pool import menu_pool
 from .models import Post
 
 class PostsMenu(CMSAttachMenu):
-    name = _("Posts Menu") # give the menu a name, this is required.
+    name = _('Posts Menu') # give the menu a name, this is required.
 
     def get_nodes(self, request):
         """

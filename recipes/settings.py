@@ -147,12 +147,15 @@ INSTALLED_APPS = [
     'djangocms_teaser',
     'djangocms_video',
     'reversion',
+    'easy_thumbnails',
     'filer',
+    'mptt',
     'meta',
     'djangocms_page_meta',
     'recipes',
     'posts',
     'subscribers',
+    'products',
 ]
 
 LANGUAGES = (

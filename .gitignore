@@ -5,3 +5,5 @@ env
 *.db
 .sass-cache
 tmp
+
+media

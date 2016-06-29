@@ -23,3 +23,4 @@ django-sekizai>=0.7
 six
 djangocms-page-meta
 django-tinymce
+mysqlclient
