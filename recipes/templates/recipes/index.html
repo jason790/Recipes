@@ -11,7 +11,7 @@
       <div class="post-thumbnail">
         <div class="picture">
           <a href="/recipes/{{recipe.slug}}">
-            <img src="{{ recipe }}" />
+            <img src="{{ recipe.picture }}" />
           </a>
         </div>
         <h4 class="title">
@@ -23,13 +23,6 @@
           <a href="/recipes/{{recipe.guid}}">{{recipe.post_date_gmt}}</a>
         </time>
       </div>
-      {% endfor %}
-
-      {% for wp_recipe in recipes %}
-        <h2>{{wp_recipe.post_title}}</h2>
-        <pre>
-          {{wp_recipe}}
-        </pre>
       {% endfor %}
 
     </div>

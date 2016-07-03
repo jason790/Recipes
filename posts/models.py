@@ -69,11 +69,13 @@ class WPPost(models.Model):
     post_mime_type = models.CharField(max_length=100)
     comment_count = models.BigIntegerField()
 
-    # meta = models.ForeignKey('WpPostmeta', on_delete=models.SET_NULL,blank=True,null=True,)
-
-    def get_picture(self):
-        res = self.objects.filter(meta_id=self.id, meta_key='_wp_attached_file')[:1][0]
-        return 'http://www.pesachisaholiday.com/assets/{}'.format(res.meta_value)
+    
+    # def picture():
+    #     objects = models.Manager()
+    #
+    #     # res = objects.filter(meta_id=self.id, meta_key='_wp_attached_file')[:1][0]
+    #     res = objects.all()[:1][0]
+    #     return 'http://www.pesachisaholiday.com/assets/{}'.format(res.meta_value)
 
     def get_absolute_url(self):
         return reverse('post:title', kwargs={
@@ -121,11 +123,13 @@ class WpTerms(models.Model):
         db_table = 'wp_terms'
 
 class WpPostmeta(models.Model):
-    meta_id = models.BigIntegerField(primary_key=True)
+    id = models.BigIntegerField(primary_key=True, db_column='meta_id')
     # post_id = models.BigIntegerField()
-    post = models.ForeignKey('WPPost', related_name='meta', on_delete=models.CASCADE, db_column='post_id')
-    meta_key = models.CharField(max_length=255, blank=True, null=True)
-    meta_value = models.TextField(blank=True, null=True)
+    post = models.ForeignKey('WPPost', related_name='meta', on_delete=models.CASCADE, db_column='post_id', blank=False, null=False)
+    meta_key = models.CharField(max_length=255, blank=False, null=False, db_column='meta_key')
+    meta_value = models.TextField(blank=False, null=False, db_column='meta_value')
+
+    # picture = 'http://www.pesachisaholiday.com/assets/{}'.format(meta_value)
 
 
     class Meta:

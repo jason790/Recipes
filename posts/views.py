@@ -11,7 +11,18 @@ def index(request):
     """
     Show the latest recipes
     """
-    recipes = WPPost.objects.prefetch_related('meta').filter(meta__meta_key='_wp_attached_file').order_by('-post_date_gmt')[:6]
+    # recipes = WPPost.objects.prefetch_related('meta').filter(meta__meta_key='_wp_attached_file').order_by('-post_date_gmt')[:6]
+    recipes = WPPost.objects.filter(post_status='publish').prefetch_related('meta').order_by('-post_date_gmt')[:6]
+    for recipe in recipes:
+        meta = recipe.meta.all()
+        for m in meta:
+            # if m.meta_key == '_thumbnail_id':
+            if m.meta_key == '_wp_attached_file':
+                recipe.picture = 'http://www.pesachisaholiday.com/assets/uploads/{}'.format(m.meta_value)
+            else:
+                f = WpPostmeta.objects.filter(meta_key='_wp_attached_file')[:1][0].meta_value
+                recipe.picture = 'http://www.pesachisaholiday.com/assets/uploads/{}'.format(f)
+
     template = loader.get_template('recipes/index.html')
     context = {
         'title': 'Recipes',
