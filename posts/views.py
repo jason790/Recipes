@@ -3,13 +3,15 @@ from django.http import HttpResponse
 from django.template import loader
 
 from .models import Post
+from .models import WPPost
+from .models import WpPostmeta
 
 # Create your views here.
 def index(request):
     """
     Show the latest recipes
     """
-    recipes = Post.objects.order_by('-created_at')[:6]
+    recipes = WPPost.objects.prefetch_related('meta').filter(meta__meta_key='_wp_attached_file').order_by('-post_date_gmt')[:6]
     template = loader.get_template('recipes/index.html')
     context = {
         'title': 'Recipes',
