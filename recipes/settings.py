@@ -14,8 +14,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -151,7 +149,6 @@ INSTALLED_APPS = [
     'filer',
     'mptt',
     'meta',
-    'djangocms_page_meta',
     'recipes',
     'posts',
     'subscribers',
@@ -194,6 +191,15 @@ CMS_PLACEHOLDER_CONF = {}
 
 DATABASES = {
     'default': {
+        'CONN_MAX_AGE': 0,
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': os.environ.get('MYSQL_HOST'),
+        'NAME': os.environ.get('MYSQL_DATABASE_NAME'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
+        'PORT': os.environ.get('MYSQL_PORT'),
+        'USER': os.environ.get('MYSQL_USERNAME')
+    },
+    'fast_dev': {
         'CONN_MAX_AGE': 0,
         'ENGINE': 'django.db.backends.sqlite3',
         'HOST': 'localhost',

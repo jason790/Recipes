@@ -21,8 +21,8 @@ urlpatterns = i18n_patterns('',
     url(r'^recipes/', include('posts.urls')),
     url(r'^shop/', include('products.urls')),
     url(r'^api/v1/subscribers/', include('subscribers.urls')),
-    url(r'^api/v1/?$', RedirectView.as_view(url='/')),
-    url(r'^api/$', RedirectView.as_view(url='/')),
+    url(r'^api/v1/?$', RedirectView.as_view(url='/', permanent=True)),
+    url(r'^api/$', RedirectView.as_view(url='/', permanent=True)),
     url(r'^', include('cms.urls')),
 )
 
