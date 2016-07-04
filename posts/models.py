@@ -138,3 +138,7 @@ class WpPostmeta(models.Model):
         managed = False
         db_table = 'wp_postmeta'
         ordering = ['-pk']
+
+# class WpPostThumbnail(models.Model):
+#     id = models.ForeignKey('WpPostmeta', related_name='thumbnail', on_delete=models.CASCADE, db_column='meta_id', blank=False, null=False)
+#     path = models.ForeignKey('WpPostmeta', related_name='path', on_delete=models.CASCADE, db_column='meta_value', blank=False, null=False)

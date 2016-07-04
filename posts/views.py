@@ -11,17 +11,31 @@ def index(request):
     """
     Show the latest recipes
     """
-    # recipes = WPPost.objects.prefetch_related('meta').filter(meta__meta_key='_wp_attached_file').order_by('-post_date_gmt')[:6]
-    recipes = WPPost.objects.filter(post_status='publish').prefetch_related('meta').order_by('-post_date_gmt')[:6]
-    for recipe in recipes:
-        meta = recipe.meta.all()
-        for m in meta:
-            # if m.meta_key == '_thumbnail_id':
-            if m.meta_key == '_wp_attached_file':
-                recipe.picture = 'http://www.pesachisaholiday.com/assets/uploads/{}'.format(m.meta_value)
-            else:
-                f = WpPostmeta.objects.filter(meta_key='_wp_attached_file')[:1][0].meta_value
-                recipe.picture = 'http://www.pesachisaholiday.com/assets/uploads/{}'.format(f)
+    query = """
+        SELECT
+            ID, post_title,post_status,thumbnail.meta_key,thumbnail.meta_value
+        FROM wp_posts
+        RIGHT JOIN
+            (
+                SELECT
+                    m.post_id,m.meta_id,t.meta_key,t.meta_value
+                FROM wp_postmeta AS t
+                    LEFT JOIN wp_postmeta AS m
+                    ON m.meta_value = t.post_id
+                WHERE t.meta_key = "_wp_attached_file"
+                    AND m.meta_key = "_thumbnail_id"
+            ) AS thumbnail
+            ON thumbnail.post_id = wp_posts.id
+        WHERE wp_posts.post_type = "post"
+            AND wp_posts.post_status = "publish"
+        ORDER BY
+            wp_posts.post_date_gmt DESC
+        LIMIT 12
+    """
+    recipes = WPPost.objects.raw(query, {
+        "meta_key": "_wp_attached_file",
+        "post_status": "publish"
+    })
 
     template = loader.get_template('recipes/index.html')
     context = {
