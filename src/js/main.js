@@ -27,10 +27,13 @@ var NavigationMenu = React.createClass({
   }
 });
 
-ReactDOM.render(
-  <NavigationMenu />,
-  document.getElementById("topMenuToggle")
-);
+var topMenuToggle = document.getElementById("topMenuToggle");
+if (topMenuToggle){
+  ReactDOM.render(
+    <NavigationMenu />,
+    topMenuToggle
+  );  
+}
 
 // subscription
 var SubscriptionForm = React.createClass({

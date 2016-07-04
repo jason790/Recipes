@@ -30,14 +30,6 @@ module.exports = (grunt) ->
         files:
           "recipes/static/css/style.css": ["recipes/static/css/style.css"]
 
-    # coffee:
-    #   compile:
-    #     expend: true
-    #     flatten: true
-    #     files: {
-    #       "js/app-react.js": "recipes/static/js/main.coffee"
-    #     }
-
     babel:
       options:
         sourceMap: true,
@@ -51,17 +43,8 @@ module.exports = (grunt) ->
           dest: "recipes/static/js"
           ext: ".js"
         ]
-      # dist:
-      #   files: {
-      #     "dist/app.js": "js/react-app.js"
-      #   }
 
     watch:
-      # coffee:
-      #   files: [
-      #     "static/js/main.coffee"
-      #   ]
-      #   tasks: ["coffee:compile"]
       sass:
         files: [
           "src/css/style.scss"
@@ -76,13 +59,13 @@ module.exports = (grunt) ->
     concat:
       dev:
         src: [
-          # "bower_components/google/analytics.js",
-          "bower_components/facebook/pixel.js",
-          "bower_components/facebook/sdk.js",
-          "bower_components/react/react.min.js",
-          "bower_components/react/react-dom.min.js",
+          "recipes/static/lib/google/analytics.js",
+          "recipes/static/lib/facebook/pixel.js",
+          "recipes/static/lib/facebook/sdk.js",
+          "recipes/static/lib/react/react.min.js",
+          "recipes/static/lib/react/react-dom.min.js",
           # "bower_components/babel/browser.min.js",
-          "dist/js/subscribe.js"
+          "src/js/main.js"
           # "js/react-app.js"
         ]
         dest: "src/js/app.js.concat"

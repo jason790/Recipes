@@ -231,7 +231,14 @@
       </div>
     </footer>
     {% render_block "js" %}
+    {% if app_mode == 'development' %}
+    <!-- <script src="{% static 'lib/facebook/sdk.js' %}"></script> -->
+    <script src="{% static 'lib/react/react.js' %}"></script>
+    <script src="{% static 'lib/react/react-dom.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-    <script src="https://assets.pinterest.com/js/pinit.js" async=""
+    {% else %}
+    <script src="{% static 'js/app.js' %}"></script>
+    {% endif %}
+    <script src="https://assets.pinterest.com/js/pinit.js" async=""></script>
   </body>
 </html>
