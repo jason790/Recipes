@@ -222,3 +222,9 @@ DATABASES = {
 MIGRATION_MODULES = {
 
 }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
+    }
+}
