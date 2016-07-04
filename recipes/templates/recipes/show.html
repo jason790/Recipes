@@ -114,4 +114,30 @@
   <!-- end container -->
 </div>
 <!-- end content -->
+
+<section>
+  <div class="container">
+    <div class="headline">
+      <h3 class="title">More Recipes</h3>
+    </div>
+    <div class="posts-thumbnails">
+      {%for related_recipe in related_recipes%}
+      <div class="post-thumbnail">
+        <div class="picture">
+        <a href="/recipes/{{related_recipe.slug}}" title="{{related_recipe.title}}">
+          <img src="http://www.pesachisaholiday.com/assets/uploads/{{ related_recipe.meta_value }}" alt="{{related_recipe.title}}" title="{{related_recipe.title}}" width="360" height="240" sizes="(max-width: 360px) 100vw, 360px" />
+        </a>
+        </div>
+        <h4 class="title">
+          <a href="/recipes/{{related_recipe.slug}}" title="{{related_recipe.title}}">
+            {{related_recipe.title}}
+          </a>
+        </h4>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</section>
+<!-- end section -->
+
 {% endblock %}
