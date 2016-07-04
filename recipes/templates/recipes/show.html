@@ -5,9 +5,9 @@
 
     <div class="main-content" role="main">
 
-      <article class="post single" itemscope itemtype="http://schema.org/Recipe">
+      <article class="post single" itemprop="mainEntity" itemscope itemtype="http://schema.org/Recipe">
         <h1 class="title" itemprop="name">{{recipe.title}}</h1>
-        <nav class="breadcrumbs">
+        <nav class="breadcrumbs" itemprop="breadcrumb">
           <ol>
             <li>
               <a href="/">Peasch is a Holiday</a>
@@ -45,7 +45,12 @@
           "recipeIngredient": [],
           "interactionStatistic": {},
           "name": "{{recipe.title}}",
-          "nutrition": {},
+          "nutrition": {
+            "@type": "NutritionInformation",
+            "calories": "{{recipe.id}} calories per 100g",
+            "fatContent": "10%"
+          },
+          "warningcookTime": "PT5m"
           "prepTime": "PT5M",
           "recipeInstructions": "",
           "recipeYield": "1 loaf",
@@ -55,6 +60,7 @@
         <!-- end json script -->
 
 
+      {% include "recipes/rating.html" %}
       {% include "recipes/sharing.html" %}
       <div class="fb-comments" data-href="http://www.pesachisaholiday.com/recipes/{{recipe.slug}}" data-numposts="12"></div>
 

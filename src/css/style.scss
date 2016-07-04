@@ -603,6 +603,21 @@ nav{
 }
 
 //
+//  Rating
+//
+.rating{
+  font-size: em(12);
+  padding: 20px 0;
+  margin: 40px 0;
+
+  .title{
+    border-top: 2px solid #e1e5e1;
+    display: inline-block;
+    padding: 10px;
+  }
+}
+
+//
 //  Sharing
 //
 .sharing{
