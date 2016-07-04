@@ -193,6 +193,9 @@ CMS_PERMISSION = True
 
 CMS_PLACEHOLDER_CONF = {}
 
+CMS_TOOLBAR_ANONYMOUS_ON = os.environ.get('DEBUG', False)
+CMS_TOOLBAR_HIDE = not os.environ.get('DEBUG', False)
+
 DATABASES = {
     'default': {
         'CONN_MAX_AGE': 10,
