@@ -133,6 +133,17 @@ def convertToYouTubeCode(body):
     converted_body = '<iframe width="560" height="315" src="{}" frameborder="0" allowfullscreen="allowfullscreen" ></iframe>'.format(embed_code)
     return converted_body+body
 
+def formatIngredients(body):
+    p = '(\[ingredients\])(.*)(\[\/ingredients\])'
+    # removes the 2 tags
+    # re.sub(p, (lambda x:x.group(2)), body)
+    body = re.sub('(\[ingredients\])', '<div class="ingredients">', body)
+    body = re.sub('(\[\/ingredients\])', '</div>', body)
+
+    return body
+
 def bodyFilters(body):
     body = convertToYouTubeCode(body)
+    body = formatIngredients(body)
+
     return body
