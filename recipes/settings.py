@@ -28,7 +28,7 @@ SECRET_KEY = '-eu5r(^lpmpe*9f79#mjkq1cbn*a_t1wft__+bf=8eg4ap0)1g'
 DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = [
-    'www.pesachisaholiday.com',
+    '.pesachisaholiday.com',
 ]
 
 
@@ -225,8 +225,8 @@ MIGRATION_MODULES = {
 
 }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
+#     }
+# }
