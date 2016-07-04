@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body itemscope itemtype="http://schema.org/WebPage">
-    {% if app_mode != 'production' %}
+    {% if app_mode == 'development' %}
       {% cms_toolbar %}
     {% endif %}
     <div id="top" class="navbar" role="navigation">
