@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="content">
+  <div class="container">
+    <div id="main-content" class="main-content" role="main">
+      <div class="index">
+        {% for recipe in recipes %}
+        <article id="post-{{recipe.id}}" class="post entry">
+          <div class="thumbnail">
+            <a href="/recipes/{{recipe.slug}}" title="{{recipe.title}}">
+              <img src="http://www.pesachisaholiday.com/assets/uploads/{{ recipe.meta_value }}" alt="{{recipe.title}}" title="{{recipe.title}}" sizes="(max-width: 360px) 100vw, 360px" />
+            </a>
+          </div>
+          <div class="thumbnail-description">
+            <h3 class="title">
+              <a href="/recipes/{{recipe.slug}}">{{recipe.title}}</a>
+            </h3>
+            <div class="meta">
+              <p>By <strong>RyeBlossom</strong> on <strong>{{recipe.post_date_gmt|date:'F d, Y'}}</strong> | <span class="category"><a href="/recipes/">Recipes</a></span></p>
+            </div>
+            <div class="description">
+              <p>{{recipe.description}}</p>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      <nav class="pagination">
+        <ul>
+          <li class="prev">
+              {% if page == 1 %}
+              <span class="page-numbers current">{{page}}</span>
+              {% else %}
+              <a class="page-numbers" href="/recipes/{{page}}">Previous</a>
+              {% endif %}
+          </li>
+          <li>
+            <ul>
+              {% for i in '234' %}
+                <li>
+                  {% ifequal i page %}
+                  <span class="page-numbers current">{{i}}</span>
+                  {% else %}
+                  <a class="page-numbers" href="/recipes/?page={{i}}">{{i}}</a>
+                  {% endifequal %}
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="next">
+            {% if page > 3 %}
+            <span class="page-numbers current">{{page}}</span>
+            {% else %}
+            <li class="page-numbers">
+              <a class="next page-numbers" href="/recipes/?page={{ 1 }}">Next</a>
+            </li>
+            {% endif %}
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <aside id="sidebar">
+
+      <div class="widget about">
+        <h4 class="title">Peasch Is A Holiday</h4>
+        <img src="/static/images/avatar.jpg">
+        <div class="description rtl">
+          <p>מתכונים טעימים לשבתות, חגים ויום-יום בשידור ישיר מהמטבח שלנו. הצטרפו לקהילה שלנו, למדו ושתפו מתכונים טעימים ובריאים.</p>
+        </div>
+      </div>
+
+      <div class="widget">
+        <h4 class="title">Follow Us</h4>
+        <p>Get to know us on social media.</p>
+        <ul class="social-icons">
+          <li>
+            <a href="https://www.youtube.com/channel/UCNHENYzY6rctjtZP_Gn3avw" target="_blank">
+              <i class="fa fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://vine.co/u/1334742438115475456" target="_blank">
+              <i class="fa fa-vine"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/pesachis" target="_blank">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.pinterest.com/Pesachis/" target="_blank">
+              <i class="fa fa-pinterest"></i>
+            </a>
+          </li><li>
+            <a href="https://www.facebook.com/Pesach-is-a-Holiday-1631068010549439" target="_blank">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a href="http://pesachis.tumblr.com" target="_blank">
+              <i class="fa fa-tumblr"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/pesachis/" target="_blank">
+              <i class="fa fa-instagram"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="widget form">
+       <div id="widgetSubscriptionForm" class="widget form"><div data-reactroot=""><h3>Subscribe To Our Newsletter</h3><p>Recieve new recipes to your inbox and get notified when there is something good that happens.</p><form><fieldset><div><input type="text" placeholder="Full name"></div><div><input type="email" placeholder="username@email.com"></div><div><input type="submit" value="Subscribe"></div></fieldset></form></div></div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+{% endblock %}

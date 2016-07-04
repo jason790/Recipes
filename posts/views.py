@@ -28,19 +28,24 @@ def index(request):
             ) AS thumbnail
             ON thumbnail.post_id = wp_posts.id
         WHERE wp_posts.post_type = "post"
-            AND wp_posts.post_status = post_status
+            AND wp_posts.post_status = %(post_status)s
         ORDER BY
             wp_posts.post_date_gmt DESC
         LIMIT 12
+        OFFSET %(page)s
     """
+
+    page = int(request.GET.get('page', '1'))
     recipes = WPPost.objects.raw(query, {
-        "post_status": "publish"
+        "post_status": "publish",
+        "page": page
     })
 
-    template = loader.get_template('recipes/index.html')
+    template = loader.get_template('recipes/list.html')
     context = {
         'title': 'Recipes',
-        'recipes': recipes
+        'recipes': recipes,
+        'page': page
     }
 
     return HttpResponse(template.render(context, request))
