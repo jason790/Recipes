@@ -27,7 +27,9 @@ SECRET_KEY = '-eu5r(^lpmpe*9f79#mjkq1cbn*a_t1wft__+bf=8eg4ap0)1g'
 # DEBUG = True
 DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'www.pesachisaholiday.com',
+]
 
 
 # Application definition
