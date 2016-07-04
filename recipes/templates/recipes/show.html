@@ -18,7 +18,7 @@
           </ol>
         </nav>
         <div class="picture">
-          <img src="{{recipe.picture}}" alt="{{recipe.title}}" />
+          <img src="http://www.pesachisaholiday.com/assets/uploads/{{ recipe.meta_value }}" alt="{{recipe.title}}" title="{{recipe.title}}" />
         </div>
         <div class="meta">
               <p>
@@ -30,7 +30,7 @@
               </p>
         </div>
         <h2 class="description">{{recipe.description}}</h2>
-        {{recipe.body}}
+        {{recipe.body|safe}}
       </article>
       <!-- end article -->
 
@@ -41,7 +41,7 @@
 
       <div class="widget about">
         <h4 class="title">Peasch Is A Holiday</h4>
-        <img src="images/avatar.jpg" />
+        <img src="/static/images/avatar.jpg" />
         <div class="description rtl">
           <p>מתכונים טעימים לשבתות, חגים ויום-יום בשידור ישיר מהמטבח שלנו. הצטרפו לקהילה שלנו, למדו ושתפו מתכונים טעימים ובריאים.</p>
         </div>

@@ -112,6 +112,11 @@ nav{
     top: 32px;
   }
 }
+.cms-toolbar-expanded{
+  .navbar{
+    top: 46px;
+  }
+}
 .navbar{
   @include clearfix;
   background-color: #fff;
@@ -120,7 +125,7 @@ nav{
   top: 0px;
   width: 100%;
   z-index: 999;
-  @include transition(opacity 0.15s $ease-out-cubic);
+  @include transition(all 0.3s $ease-out-cubic);
 
   &.opened{
     ul{
@@ -497,10 +502,6 @@ nav{
   &.single{
     .title{
       font-size: em(38);
-    }
-
-    img{
-      height: 100%;
     }
 
   }
