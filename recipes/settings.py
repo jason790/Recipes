@@ -213,11 +213,11 @@ DATABASES = {
     'staging': {
         'CONN_MAX_AGE': 0,
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': os.environ.get('DATABASE_HOST'),
-        'NAME': os.environ.get('DATABASE_NAME'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+        'HOST': os.environ.get('DATABASE_HOST', '0.0.0.0'),
+        'NAME': os.environ.get('DATABASE_NAME', 'staging'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'password'),
         'PORT': 5433,
-        'USER': os.environ.get('DATABASE_HOST')
+        'USER': os.environ.get('DATABASE_USERNAME')
     }
 }
 
