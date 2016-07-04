@@ -18,7 +18,7 @@
 
       <article class="post single" itemprop="mainEntity" itemscope itemtype="http://schema.org/Recipe">
         <h1 class="title" itemprop="name">{{recipe.title}}</h1>
-        <nav class="breadcrumbs" itemprop="breadcrumb">
+        <nav class="breadcrumbs">
           <ol>
             <li>
               <a href="/">Peasch is a Holiday</a>
@@ -56,12 +56,14 @@
           "recipeIngredient": [],
           "interactionStatistic": {},
           "name": "{{recipe.title}}",
+          "breadcrumb": "Recipes > {{recipe.title}}"
           "nutrition": {
             "@type": "NutritionInformation",
             "calories": "{{recipe.id}} calories per 100g",
             "fatContent": "10%"
           },
           "warningcookTime": "PT5m",
+          "cookTime": "PT5m",
           "prepTime": "PT5M",
           "recipeInstructions": "",
           "recipeYield": "1 loaf",
