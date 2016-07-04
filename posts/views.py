@@ -35,7 +35,7 @@ def show(request, slug):
     """
     Show a single recipe
     """
-    recipe = Post.objects.get(slug=slug)
+    recipe = WPPost.objects.get(slug=slug)
     template = loader.get_template('recipes/show.html')
     context = {
         'title': recipe.title,
