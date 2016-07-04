@@ -193,7 +193,7 @@ CMS_PLACEHOLDER_CONF = {}
 
 DATABASES = {
     'default': {
-        'CONN_MAX_AGE': 0,
+        'CONN_MAX_AGE': 10,
         'ENGINE': 'django.db.backends.mysql',
         'HOST': os.environ.get('MYSQL_HOST'),
         'NAME': os.environ.get('MYSQL_DATABASE_NAME'),
