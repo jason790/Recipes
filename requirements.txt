@@ -22,4 +22,4 @@ Pillow>=2.3
 django-sekizai>=0.7
 six
 django-tinymce
-pymysql
+PyMySQL==0.7.5
