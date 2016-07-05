@@ -43,7 +43,11 @@ def search(request):
             ON thumbnail.post_id = wp_posts.id
         WHERE wp_posts.post_type = "post"
             AND wp_posts.post_status = %(post_status)s
-            AND MATCH(post_content) AGAINST (%(term)s)
+            AND (
+                MATCH(post_content) AGAINST (%(term)s)
+                OR MATCH(post_excerpt) AGAINST (%(term)s)
+                OR MATCH(post_title) AGAINST (%(term)s)
+            )
         ORDER BY
             wp_posts.post_date_gmt DESC
         LIMIT 12
