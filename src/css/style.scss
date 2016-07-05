@@ -41,6 +41,7 @@ $mobile: new-breakpoint(max-width 480px 4);
 //    Footer
 //    Forms
 //      Registration
+//      Search
 //
 //
 //
@@ -942,4 +943,12 @@ section{
   .links{
     font-size: em(12);
   }
+}
+
+//
+//    Search
+//
+.search-form{
+  margin: 0 auto;
+  max-width: 520px;
 }

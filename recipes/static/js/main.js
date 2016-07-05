@@ -42,8 +42,8 @@ if (topMenuToggle) {
 }
 
 // subscription
-var SubscriptionForm = React.createClass({
-  displayName: "SubscriptionForm",
+var SubscriptionFormComponent = React.createClass({
+  displayName: "SubscriptionFormComponent",
 
   getInitialState: function getInitialState() {
     return {
@@ -144,5 +144,108 @@ var SubscriptionForm = React.createClass({
 });
 
 // render
-ReactDOM.render(React.createElement(SubscriptionForm, { name: "", email: "", url: "/v1/api/subscribers/create.json" }), document.getElementById("widgetSubscriptionForm"));
+var widgetSubscriptionForm = document.getElementById("widgetSubscriptionForm");
+if (widgetSubscriptionForm) {
+  ReactDOM.render(React.createElement(SubscriptionFormComponent, { name: "", email: "", url: "/v1/api/subscribers/create.json" }), widgetSubscriptionForm);
+}
+
+var SearchFormComponent = React.createClass({
+  displayName: "SearchFormComponent",
+  getInitialState: function getInitialState() {
+    return {
+      disabled: false,
+      term: this.props.term,
+      submit: "Search"
+    };
+  },
+  handleTermChange: function handleTermChange(e) {
+    this.setState({
+      term: e.target.value
+    });
+  },
+  handleSubmittion: function handleSubmittion(e) {
+    e.preventDefault();
+    var name = this.state.name.trim();
+    var email = this.state.email.trim();
+
+    // make sure all the field are filled out
+    if (!name || !email) {
+      return false;
+    }
+    this.setState({
+      submit: "Sending..."
+    });
+
+    // send request
+    $.ajax({
+      url: this.props.url,
+      dataType: "json",
+      // cache: false,
+      method: "POST",
+      data: {
+        name: name,
+        email: email
+      },
+      success: function success(data) {},
+      error: function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+    this.setState({
+      name: "",
+      email: "",
+      submit: "Sent"
+    });
+  },
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "h3",
+        { "class": "title" },
+        "Subscribe To Our Newsletter"
+      ),
+      React.createElement(
+        "p",
+        null,
+        "Recieve new recipes to your inbox and get notified when there is something good that happens."
+      ),
+      React.createElement(
+        "form",
+        { url: this.state.url, onSubmit: this.handleSubmittion },
+        React.createElement(
+          "fieldset",
+          null,
+          React.createElement(
+            "div",
+            { "class": "field" },
+            React.createElement("input", { type: "text", placeholder: "Full name",
+              "class": "control", disabled: false,
+              value: this.state.name, onChange: this.handleNameChange })
+          ),
+          React.createElement(
+            "div",
+            { "class": "field" },
+            React.createElement("input", { type: "email", placeholder: "username@email.com",
+              "class": "control", disabled: false,
+              value: this.state.email, onChange: this.handleEmailChange })
+          ),
+          React.createElement(
+            "div",
+            { "class": "actions" },
+            React.createElement("input", { type: "submit", value: this.state.submit })
+          )
+        )
+      )
+    );
+  }
+});
+
+// render
+var SearchForm = document.getElementById("SearchForm1");
+if (SearchForm) {
+  ReactDOM.render(React.createElement(SearchFormComponent, { term: "", url: "/search" }), SearchForm);
+}
 //# sourceMappingURL=main.js.map

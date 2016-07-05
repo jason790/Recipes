@@ -156,6 +156,7 @@ INSTALLED_APPS = [
     'posts',
     'subscribers',
     'products',
+    'search',
 ]
 
 LANGUAGES = (

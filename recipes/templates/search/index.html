@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{title}}{% endblock title %}
+{%block content%}
+<div id="content">
+  <div class="container">
+
+    <div id="SearchForm" class="search-form">
+      <form>
+        <fieldset>
+          <label for="q">Search</label>
+          <input type="search" name="q" id="q" autocomplete="off" />
+          <div class="actions">
+            <input type="submit" name="submit" value="Search" />
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <!-- end search form -->
+
+    <div class="entries">
+      {%if entries%}
+      <!-- <header>
+        <h1>Search Results</h1>
+      </header> -->
+
+      {%for entry in entries%}
+      <div class="entry">
+        <h3 class="title">
+          <a href="/recipes/{{entry.slug}}">{{entry.title}}</a>
+        </h3>
+      </div>
+      {%endfor%}
+
+      {%endif%}
+    </div>
+
+  </div>
+</div>
+
+{%endblock%}
