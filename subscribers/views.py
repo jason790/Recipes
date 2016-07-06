@@ -22,7 +22,7 @@ def create(request):
 
     logger.debug(subscriber)
 
-    return JsonResponse(dict(subscriber))
+    return JsonResponse(subscriber)
 
 def list(request):
     """

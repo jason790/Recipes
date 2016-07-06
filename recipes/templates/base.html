@@ -59,7 +59,7 @@
     {% block content %}
     <div id="banner">
       <div class="container">
-        <a href="https://www.youtube.com/channel/UCNHENYzY6rctjtZP_Gn3avw/live">
+        <a href="https://www.youtube.com/channel/UCNHENYzY6rctjtZP_Gn3avw/live" onclick="ga('send', 'event', 'Banner', 'click', 'YouTube');">
           <img src="images/banner_stream.jpg" />
         </a>
       </div>
@@ -162,32 +162,32 @@
             <p>Get to know us on social media.</p>
             <ul class="social-icons">
               <li>
-                <a href="https://www.youtube.com/channel/UCNHENYzY6rctjtZP_Gn3avw">
+                <a href="https://www.youtube.com/channel/UCNHENYzY6rctjtZP_Gn3avw" onclick="ga('send', 'event', 'SidebarSocialLink', 'click', 'YouTube');">
                   <i class="fa fa-youtube"></i>
                 </a>
               </li>
               <li>
-                <a href="https://vine.co/u/1334742438115475456">
+                <a href="https://vine.co/u/1334742438115475456" onclick="ga('send', 'event', 'SidebarSocialLink', 'click', 'Vine');">
                   <i class="fa fa-vine"></i>
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/pesachis">
+                <a href="https://twitter.com/pesachis" onclick="ga('send', 'event', 'SidebarSocialLink', 'click', 'Twitter');">
                   <i class="fa fa-twitter"></i>
                 </a>
               </li>
               <li>
-                <a href="https://www.pinterest.com/Pesachis/">
+                <a href="https://www.pinterest.com/Pesachis/" onclick="ga('send', 'event', 'SidebarSocialLink', 'click', 'Pinterest');">
                   <i class="fa fa-pinterest"></i>
                 </a>
               </li>
               <li>
-                <a href="http://pesachis.tumblr.com">
+                <a href="http://pesachis.tumblr.com" onclick="ga('send', 'event', 'SidebarSocialLink', 'click', 'Tumblr');">
                   <i class="fa fa-tumblr"></i>
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com/pesachis/">
+                <a href="https://www.instagram.com/pesachis/" onclick="ga('send', 'event', 'SidebarSocialLink', 'click', 'Instagram');">
                   <i class="fa fa-instagram"></i>
                 </a>
               </li>
@@ -230,13 +230,15 @@
     <footer id="footer">
       <div class="container">
         <div class="credits">
-          <p>Copyright © 2016 Pesach is a Holiday - Created by <a href="http://conpanna.net/">ConPanna</a></p>
+          <p>Copyright © 2016 Pesach is a Holiday - Created by <a href="http://conpanna.net/" onclick="ga('send', 'event', 'Link', 'out', 'ConPanna');">ConPanna</a></p>
         </div>
       </div>
     </footer>
     {% render_block "js" %}
     {% if app_mode == 'development' %}
     <!-- <script src="{% static 'lib/facebook/sdk.js' %}"></script> -->
+    <script src="{% static 'lib/google/analytics.js' %}"></script>
+    <script src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'lib/react/react.js' %}"></script>
     <script src="{% static 'lib/react/react-dom.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
