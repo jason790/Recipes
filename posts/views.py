@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.template import loader
 
 import re
+from datetime import datetime
+from datetime import timedelta
 
 from .models import Post
 from .models import WPPost
@@ -120,6 +122,17 @@ def show(request, slug):
 
     return HttpResponse(template.render(context, request))
 
+def live(request):
+    starting_at = eventStartingAt()
+
+    template = loader.get_template('recipes/live.html')
+    context = {
+        'title': 'Live Streaming From My Kitchen',
+        'description': 'The live event is starting at {}. Join us and type in any questions you have.'.format(starting_at.strftime('%H:%M, %b %d %Y')),
+        'picture': 'live-event-thumbnail.jpg',
+        'starting_at': starting_at
+    }
+    return HttpResponse(template.render(context, request))
 
 #
 #   Helpers
@@ -147,3 +160,20 @@ def bodyFilters(body):
     body = formatIngredients(body)
 
     return body
+
+# Set the starting time for each day
+def eventStartingAt():
+    now = datetime.now()
+    day = now.weekday()
+    # datetime.weekday
+    # Monday is 0 and Thursday is 3
+
+    # if after Monday and before Thursday
+    if 0 <= day <= 3:
+        t = (now + timedelta(days=(3-day)))
+
+    # if after Thursday
+    if day > 3:
+        t = (now + timedelta(days=(7-day)))
+
+    return datetime(t.year,t.month,t.day,20,0,0)

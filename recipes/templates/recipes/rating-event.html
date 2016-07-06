@@ -1,0 +1,16 @@
+<div class="rating">
+  <h4 class="title">Rate This Event</h4>
+  <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+    <form class="pure-form">
+      <fieldset>
+        <input type="radio" value="1" />
+        <input type="radio" value="2" />
+        <input type="radio" value="3" />
+        <input type="radio" value="4" />
+        <input type="radio" value="5" />
+      </fieldset>
+    </form>
+    <span itemprop="ratingValue">5</span> Stars -
+    <span itemprop="reviewCount">{{ starting_at | date:'4m' }}</span> users
+  </div>
+</div>

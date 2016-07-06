@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}{{title}}{% endblock%}
+{% block meta_tags %}
+<meta name="description" content="{{description}}" />
+<meta property="og:site_name" content="Pesach Is A Holiday" />
+<meta property="og:title" content="{{title}}" />
+<meta property="og:description" content="{{description}}" />
+<meta property="og:image" content="/static/images/{{picture}}" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@pesachis" />
+<meta name="twitter:creator" content="@pesachis" />
+{% endblock %}
+{% block content %}
+<div id="content">
+  <div class="container">
+
+    <div class="main-content" role="main">
+
+      <article class="post single" itemprop="mainEntity" itemscope itemtype="http://schema.org/Event">
+        <h1 class="title" itemprop="name">{{title}}</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li>
+              <a href="/">Peasch is a Holiday</a>
+            </li>
+            <li>
+              <a href="/live">Live</a>
+            </li>
+          </ol>
+        </nav>
+        <div class="picture">
+          <img src="http://www.pesachisaholiday.com/static/images/{{ picture }}" alt="{{title}}" title="{{title}}" itemprop="image" />
+        </div>
+        <div class="meta">
+              <p>
+                  By <strong itemprop="author">Rye</strong>
+                  on <strong itemprop="datePublished" content="{{starting_at | date:'Y-m-d' }}">{{starting_at | date:'F d, Y' }}</strong>
+                  | <span class="category">
+                      <a itemprop="url" href="http://www.pesachisaholiday.com/live">Live</a>
+                    </span>
+              </p>
+        </div>
+        <h2 class="description" itemprop="description">{{description}}</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/O5a7IE7P8_c" frameborder="0" allowfullscreen></iframe>
+        <div class="summary">
+
+        </div>
+
+      </article>
+      <!-- end article -->
+      <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Event",
+          "director": "Rye",
+          "location": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Michigan",
+              "addressRegion": "MI"
+            }
+          }
+          "datePublished": "{{starting_at | date:'Y-m-d' }}",
+          "startDate": "{{ starting_at }}",
+          "description": "{{description}}",
+          "image": "/static/images/{{picture}}",
+          "name": "{{title}}",
+          "breadcrumb": "Recipes > Live",
+          "url": "http://www.pesachisaholiday.com/live"
+        }
+        </script>
+        <!-- end json script -->
+
+
+      {% include "recipes/rating-event.html" %}
+      {% include "recipes/sharing.html" %}
+      <div class="fb-comments" data-href="http://www.pesachisaholiday.com/live" data-numposts="12"></div>
+
+    </div>
+    <!-- end main content -->
+
+    {% include "recipes/_sidebar.html" %}
+
+  </div>
+  <!-- end container -->
+</div>
+<!-- end content -->
+
+{% endblock %}
