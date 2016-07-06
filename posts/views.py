@@ -47,7 +47,7 @@ def index(request):
 
     template = loader.get_template('recipes/list.html')
     context = {
-        'title': 'Recipes',
+        'title': 'Easy Healthy Recipes',
         'recipes': recipes,
         'page': page
     }
