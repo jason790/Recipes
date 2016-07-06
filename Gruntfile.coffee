@@ -65,7 +65,8 @@ module.exports = (grunt) ->
           "recipes/static/lib/react/react.min.js",
           "recipes/static/lib/react/react-dom.min.js",
           # "bower_components/babel/browser.min.js",
-          "src/js/main.js"
+          # "src/js/main.js"
+          "recipes/static/js/main.js"
           # "js/react-app.js"
         ]
         dest: "src/js/app.js.concat"

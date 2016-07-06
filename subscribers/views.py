@@ -18,11 +18,13 @@ def create(request):
     name = request.POST.get('name')
     email = request.POST.get('email')
     subscriber = Subscriber(name=name, email=email, created_at=datetime.utcnow())
-    subscriber.save()
+    res = subscriber.save()
+    print(res)
+    logger.debug(res)
 
     logger.debug(subscriber)
 
-    return JsonResponse(subscriber)
+    return JsonResponse(dict(subscriber))
 
 def list(request):
     """

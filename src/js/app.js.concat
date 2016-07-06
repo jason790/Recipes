@@ -54,43 +54,51 @@ return o.call(this,e,t,n,r)}var o=e(103),i={deltaX:function(e){return"deltaX"in 
 "use strict";
 
 // menu
+
 var NavigationMenu = React.createClass({
-  getInitialState: function(){
+  displayName: "NavigationMenu",
+
+  getInitialState: function getInitialState() {
     return {
       opened: false,
       menu: "closed"
-    }
+    };
   },
-  handleClick: function(){
-    const menuState = !this.state.opened ? "opened" : "closed"
+  handleClick: function handleClick() {
+    var menuState = !this.state.opened ? "opened" : "closed";
 
     // handle menu element
-    document.getElementById("top").className = "navbar "+menuState;
+    document.getElementById("top").className = "navbar " + menuState;
 
     this.setState({
       opened: !this.state.opened,
       menu: menuState
-    })
+    });
   },
-  render: function(){
-    const text = this.state.opened ? "opened" : "closed"
-    return <button onClick={this.handleClick} className={this.state.menu}>
-        <i className="fa fa-bars" aria-hidden="true">&nbsp;</i>
-      </button>
+  render: function render() {
+    var text = this.state.opened ? "opened" : "closed";
+    return React.createElement(
+      "button",
+      { onClick: this.handleClick, className: this.state.menu },
+      React.createElement(
+        "i",
+        { className: "fa fa-bars", "aria-hidden": "true" },
+        " "
+      )
+    );
   }
 });
 
 var topMenuToggle = document.getElementById("topMenuToggle");
-if (topMenuToggle){
-  ReactDOM.render(
-    <NavigationMenu />,
-    topMenuToggle
-  );
+if (topMenuToggle) {
+  ReactDOM.render(React.createElement(NavigationMenu, null), topMenuToggle);
 }
 
 // subscription
 var SubscriptionFormComponent = React.createClass({
-  getInitialState: function(){
+  displayName: "SubscriptionFormComponent",
+
+  getInitialState: function getInitialState() {
     return {
       disabled: false,
       name: this.props.name,
@@ -99,23 +107,23 @@ var SubscriptionFormComponent = React.createClass({
       url: this.props.url
     };
   },
-  handleNameChange: function(e){
+  handleNameChange: function handleNameChange(e) {
     this.setState({
       name: e.target.value
-    })
+    });
   },
-  handleEmailChange: function(e){
+  handleEmailChange: function handleEmailChange(e) {
     this.setState({
       email: e.target.value
-    })
+    });
   },
-  handleSubmittion: function(e){
+  handleSubmittion: function handleSubmittion(e) {
     e.preventDefault();
     var name = this.state.name.trim();
     var email = this.state.email.trim();
 
     // make sure all the field are filled out
-    if (!name || !email){
+    if (!name || !email) {
       return false;
     }
     this.setState({
@@ -132,9 +140,8 @@ var SubscriptionFormComponent = React.createClass({
         name: name,
         email: email
       },
-      success: function(data){
-      },
-      error: function(xhr, status, err){
+      success: function success(data) {},
+      error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
@@ -143,62 +150,79 @@ var SubscriptionFormComponent = React.createClass({
       email: "",
       submit: "Sent"
     });
-
   },
-  render: function(){
-    return <div>
-      <h3 class="title">Subscribe To Our Newsletter</h3>
-      <p>Recieve new recipes to your inbox and get notified when there is something good that happens.</p>
-      <form url={this.state.url} onSubmit={this.handleSubmittion}>
-        <fieldset>
-          <div class="field">
-            <input type="text" placeholder="Full name"
-            class="control" disabled={false}
-            value={this.state.name} onChange={this.handleNameChange} />
-          </div>
-          <div class="field">
-            <input type="email" placeholder="username@email.com"
-            class="control" disabled={false}
-            value={this.state.email} onChange={this.handleEmailChange} />
-          </div>
-          <div class="actions">
-            <input type="submit" value={this.state.submit} />
-          </div>
-        </fieldset>
-      </form>
-    </div>
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "h3",
+        { "class": "title" },
+        "Subscribe To Our Newsletter"
+      ),
+      React.createElement(
+        "p",
+        null,
+        "Recieve new recipes to your inbox and get notified when there is something good that happens."
+      ),
+      React.createElement(
+        "form",
+        { url: this.state.url, onSubmit: this.handleSubmittion },
+        React.createElement(
+          "fieldset",
+          null,
+          React.createElement(
+            "div",
+            { "class": "field" },
+            React.createElement("input", { type: "text", placeholder: "Full name",
+              "class": "control", disabled: false,
+              value: this.state.name, onChange: this.handleNameChange })
+          ),
+          React.createElement(
+            "div",
+            { "class": "field" },
+            React.createElement("input", { type: "email", placeholder: "username@email.com",
+              "class": "control", disabled: false,
+              value: this.state.email, onChange: this.handleEmailChange })
+          ),
+          React.createElement(
+            "div",
+            { "class": "actions" },
+            React.createElement("input", { type: "submit", value: this.state.submit })
+          )
+        )
+      )
+    );
   }
 });
 
 // render
 var widgetSubscriptionForm = document.getElementById("widgetSubscriptionForm");
-if (!!widgetSubscriptionForm){
-  ReactDOM.render(
-    <SubscriptionFormComponent name="" email="" url="/v1/api/subscribers/create.json" />,
-    widgetSubscriptionForm
-  );
+if (!!widgetSubscriptionForm) {
+  ReactDOM.render(React.createElement(SubscriptionFormComponent, { name: "", email: "", url: "/v1/api/subscribers/create.json" }), widgetSubscriptionForm);
 }
 
 var SearchFormComponent = React.createClass({
-  getInitialState(){
+  displayName: "SearchFormComponent",
+  getInitialState: function getInitialState() {
     return {
       disabled: false,
       term: this.props.term,
       submit: "Search"
     };
   },
-  handleTermChange(e){
+  handleTermChange: function handleTermChange(e) {
     this.setState({
       term: e.target.value
-    })
+    });
   },
-  handleSubmittion(e){
+  handleSubmittion: function handleSubmittion(e) {
     e.preventDefault();
     var name = this.state.name.trim();
     var email = this.state.email.trim();
 
     // make sure all the field are filled out
-    if (!name || !email){
+    if (!name || !email) {
       return false;
     }
     this.setState({
@@ -215,9 +239,8 @@ var SearchFormComponent = React.createClass({
         name: name,
         email: email
       },
-      success: function(data){
-      },
-      error: function(xhr, status, err){
+      success: function success(data) {},
+      error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
@@ -226,38 +249,56 @@ var SearchFormComponent = React.createClass({
       email: "",
       submit: "Sent"
     });
-
   },
-  render: function(){
-    return <div>
-      <h3 class="title">Subscribe To Our Newsletter</h3>
-      <p>Recieve new recipes to your inbox and get notified when there is something good that happens.</p>
-      <form url={this.state.url} onSubmit={this.handleSubmittion}>
-        <fieldset>
-          <div class="field">
-            <input type="text" placeholder="Full name"
-            class="control" disabled={false}
-            value={this.state.name} onChange={this.handleNameChange} />
-          </div>
-          <div class="field">
-            <input type="email" placeholder="username@email.com"
-            class="control" disabled={false}
-            value={this.state.email} onChange={this.handleEmailChange} />
-          </div>
-          <div class="actions">
-            <input type="submit" value={this.state.submit} />
-          </div>
-        </fieldset>
-      </form>
-    </div>
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "h3",
+        { "class": "title" },
+        "Subscribe To Our Newsletter"
+      ),
+      React.createElement(
+        "p",
+        null,
+        "Recieve new recipes to your inbox and get notified when there is something good that happens."
+      ),
+      React.createElement(
+        "form",
+        { url: this.state.url, onSubmit: this.handleSubmittion },
+        React.createElement(
+          "fieldset",
+          null,
+          React.createElement(
+            "div",
+            { "class": "field" },
+            React.createElement("input", { type: "text", placeholder: "Full name",
+              "class": "control", disabled: false,
+              value: this.state.name, onChange: this.handleNameChange })
+          ),
+          React.createElement(
+            "div",
+            { "class": "field" },
+            React.createElement("input", { type: "email", placeholder: "username@email.com",
+              "class": "control", disabled: false,
+              value: this.state.email, onChange: this.handleEmailChange })
+          ),
+          React.createElement(
+            "div",
+            { "class": "actions" },
+            React.createElement("input", { type: "submit", value: this.state.submit })
+          )
+        )
+      )
+    );
   }
 });
 
 // render
 var SearchForm = document.getElementById("SearchForm1");
-if (!!SearchForm){
-  ReactDOM.render(
-    <SearchFormComponent term="" url="/search" />,
-    SearchForm
-  );
+if (!!SearchForm) {
+  ReactDOM.render(React.createElement(SearchFormComponent, { term: "", url: "/search" }), SearchForm);
 }
+//# sourceMappingURL=main.js.map
