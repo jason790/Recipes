@@ -33,7 +33,7 @@
         </div>
         <div class="meta">
               <p>
-                  By <strong itemprop="director">Rye</strong>
+                  By <strong>Rye</strong>
                   on <strong itemprop="startDate" content="{{starting_at | date:'Y-m-d' }}">{{starting_at | date:'F d, Y' }}</strong>
                   | <span class="category">
                       <a itemprop="url" href="http://www.pesachisaholiday.com/live">Live</a>
@@ -95,7 +95,10 @@
         {
           "@context": "http://schema.org",
           "@type": "Event",
-          "director": "Rye",
+          "director": {
+            "@type": "Person",
+            "name": "Rye"
+          },
           "location": {
             "@type": "Place",
             "address": {
