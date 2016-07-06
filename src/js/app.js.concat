@@ -199,7 +199,7 @@ var SubscriptionFormComponent = React.createClass({
 // render
 var widgetSubscriptionForm = document.getElementById("widgetSubscriptionForm");
 if (!!widgetSubscriptionForm) {
-  ReactDOM.render(React.createElement(SubscriptionFormComponent, { name: "", email: "", url: "/v1/api/subscribers/create.json" }), widgetSubscriptionForm);
+  ReactDOM.render(React.createElement(SubscriptionFormComponent, { name: "", email: "", url: "/api/v1/subscribers/create.json" }), widgetSubscriptionForm);
 }
 
 var SearchFormComponent = React.createClass({

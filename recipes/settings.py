@@ -40,6 +40,8 @@ ALLOWED_HOSTS = [
 
 ROOT_URLCONF = 'recipes.urls'
 
+# Do not append slash at the end if the url was not found.
+APPEND_SLASH = False
 
 
 WSGI_APPLICATION = 'recipes.wsgi.application'
