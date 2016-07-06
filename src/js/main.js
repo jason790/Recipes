@@ -119,7 +119,7 @@ var SubscriptionFormComponent = React.createClass({
 
 // render
 var widgetSubscriptionForm = document.getElementById("widgetSubscriptionForm");
-if (widgetSubscriptionForm){
+if (!!widgetSubscriptionForm){
   ReactDOM.render(
     <SubscriptionFormComponent name="" email="" url="/v1/api/subscribers/create.json" />,
     widgetSubscriptionForm
@@ -202,7 +202,7 @@ var SearchFormComponent = React.createClass({
 
 // render
 var SearchForm = document.getElementById("SearchForm1");
-if (SearchForm){
+if (!!SearchForm){
   ReactDOM.render(
     <SearchFormComponent term="" url="/search" />,
     SearchForm
