@@ -36,6 +36,7 @@ $mobile: new-breakpoint(max-width 480px 4);
 //    Header
 //    Content
 //      Article
+//      Rating
 //      Sharing
 //    Related Stories
 //    Footer
@@ -492,6 +493,10 @@ nav{
     }
   }
 }
+
+//
+//    Article
+//
 .post{
 
   .title{
@@ -537,6 +542,13 @@ nav{
     .meta{
       border-top: 4px solid #e1e5e1;
       border-bottom: 4px solid #e1e5e1;
+    }
+  }
+
+  .video{
+    .player{
+      margin: 0 auto;
+      max-width: 100%;
     }
   }
 
@@ -619,7 +631,7 @@ nav{
 }
 
 //
-//  Sharing
+//    Sharing
 //
 .sharing{
   font-size: em(12);

@@ -28,8 +28,8 @@
             </li>
           </ol>
         </nav>
-        <div class="picture">
-          <img src="http://www.pesachisaholiday.com/static/images/{{ picture }}" alt="{{title}}" title="{{title}}" itemprop="image" />
+        <div class="video">
+          <iframe width="750" height="420" src="https://www.youtube.com/embed/O5a7IE7P8_c" frameborder="0" allowfullscreen class="player"></iframe>
         </div>
         <div class="meta">
               <p>
@@ -41,10 +41,53 @@
               </p>
         </div>
         <h2 class="description" itemprop="description">{{description}}</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/O5a7IE7P8_c" frameborder="0" allowfullscreen></iframe>
         <div class="summary">
-
+          <h3>Summary</h3>
+            <p>These are common questions and answers. If you have any question, then write it below or on the chat screen.</p>
+            {% spaceless %}
+            <div itemscope itemtype="http://schema.org/Question">
+              <p itemprop="name">
+                <span>
+                  <strong>Q:</strong> Where is the video player?
+                </span>
+                <br />
+                <span itemprop="suggestedAnswer acceptedAnswer" itemscope itemtype="http://schema.org/Answer">
+                  <span itemprop="text">
+                    <strong>A:</strong> The video player will appear about 15 minutes before the event.
+                    Refresh the page if you don't see it.
+                  </span>
+                </span>
+              </p>
+            </div>
+            <div itemscope itemtype="http://schema.org/Question">
+              <p itemprop="name">
+                <span>
+                  <strong>Q:</strong> Where is the chat screen?
+                </span>
+                <br />
+                <span itemprop="suggestedAnswer acceptedAnswer" itemscope itemtype="http://schema.org/Answer">
+                  <span itemprop="text">
+                    <strong>A:</strong> The live chat is in <a href="https://youtube.com/pesachisaholiday/live" target="_blank">our YouTube live event page.</a>
+                  </span>
+                </span>
+              </p>
+            </div>
+            <div itemscope itemtype="http://schema.org/Question">
+              <p itemprop="name">
+                <span>
+                  <strong>Q:</strong> Why the video is not live?
+                </span>
+                <br />
+                <span itemprop="suggestedAnswer acceptedAnswer" itemscope itemtype="http://schema.org/Answer">
+                  <span itemprop="text">
+                    <strong>A:</strong> Refresh the page and press play on the video player.
+                  </span>
+                </span>
+              </p>
+            </div>
+            {% endspaceless %}
         </div>
+        <!-- end summary -->
 
       </article>
       <!-- end article -->
