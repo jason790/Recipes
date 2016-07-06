@@ -62,6 +62,7 @@ module.exports = (grunt) ->
           "recipes/static/lib/google/analytics.js",
           "recipes/static/lib/facebook/pixel.js",
           "recipes/static/lib/facebook/sdk.js",
+          "recipes/static/lib/jquery/dist/jquery.min.js",
           "recipes/static/lib/react/react.min.js",
           "recipes/static/lib/react/react-dom.min.js",
           # "bower_components/babel/browser.min.js",

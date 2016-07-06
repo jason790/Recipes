@@ -39,6 +39,8 @@ $mobile: new-breakpoint(max-width 480px 4);
 //      Rating
 //      Sharing
 //    Related Stories
+//    Pagination
+//    Search Results
 //    Footer
 //    Forms
 //      Registration
@@ -758,6 +760,21 @@ section{
 }
 
 //
+// Search Results
+//
+.entries{
+  margin: 20px auto;
+  max-width: 520px;
+
+  .entry{
+    background: #fff;
+    margin: 0 0 4px 0;
+    padding: 10px 4px;
+  }
+}
+
+
+//
 // Pagination
 //
 .pagination{
@@ -935,6 +952,15 @@ section{
 //
 // Forms
 //
+.search-form{
+  input{
+    margin: 0;
+
+    &[type="submit"]{
+      width: 100%;
+    }
+  }
+}
 
 //
 //    Registration
