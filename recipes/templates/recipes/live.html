@@ -24,7 +24,7 @@
               <a href="/">Peasch is a Holiday</a>
             </li>
             <li>
-              <a href="/live">Live</a>
+              <a itemprop="location" href="/live">Live</a>
             </li>
           </ol>
         </nav>
@@ -33,8 +33,8 @@
         </div>
         <div class="meta">
               <p>
-                  By <strong itemprop="author">Rye</strong>
-                  on <strong itemprop="datePublished" content="{{starting_at | date:'Y-m-d' }}">{{starting_at | date:'F d, Y' }}</strong>
+                  By <strong itemprop="director">Rye</strong>
+                  on <strong itemprop="startDate" content="{{starting_at | date:'Y-m-d' }}">{{starting_at | date:'F d, Y' }}</strong>
                   | <span class="category">
                       <a itemprop="url" href="http://www.pesachisaholiday.com/live">Live</a>
                     </span>
@@ -103,8 +103,7 @@
               "addressLocality": "Michigan",
               "addressRegion": "MI"
             }
-          }
-          "datePublished": "{{starting_at | date:'Y-m-d' }}",
+          },
           "startDate": "{{ starting_at }}",
           "description": "{{description}}",
           "image": "/static/images/{{picture}}",
