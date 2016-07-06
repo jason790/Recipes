@@ -6,10 +6,10 @@
   <div class="container">
 
     <div id="SearchForm" class="search-form">
-      <form>
+      <form action="/search" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
         <fieldset>
           <label for="q">Search The Website</label>
-          <input type="text" name="q" id="q" autocomplete="off" placeholder="Healthy, sweet, etc." />
+          <input type="text" name="q" id="q" autocomplete="off" placeholder="Healthy, sweet, etc." itemprop="query-input" />
           <input type="submit" name="submit" value="Search" />
         </fieldset>
       </form>
@@ -24,14 +24,27 @@
 
       {%for entry in entries%}
       <div class="entry">
-        <h3 class="title">
-          <a href="/recipes/{{entry.slug}}">{{entry.title}}</a>
-        </h3>
+        <a href="/recipes/{{entry.slug}}">
+          <strong>{{entry.title}}</strong>
+        </a>
       </div>
       {%endfor%}
 
       {%endif%}
     </div>
+
+    <script type="application/ld+json">
+      {
+          "@context": "http://schema.org",
+          "@type": "WebSite",
+          "url": "http://www.pesachisaholiday.com",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "http://www.pesachisaholiday.com/search?&q={query}",
+            "query-input": "required"
+          }
+      }
+      </script>
 
   </div>
 </div>
