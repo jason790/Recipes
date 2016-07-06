@@ -25,6 +25,7 @@ $footerBackground: #222;
 $smallScreen: new-breakpoint(max-width 1200px 8);
 $laptop: new-breakpoint(max-width 960px 6);
 $mobile: new-breakpoint(max-width 480px 4);
+$mobile-4: new-breakpoint(max-width 320px 4);
 
 
 //
@@ -267,6 +268,10 @@ nav{
   margin: 0 0 10px 0;
   padding: 6px;
 
+  @include media($mobile-4){
+    display: none;
+  }
+
   ol{
     li{
       display: inline-block;
@@ -403,6 +408,10 @@ nav{
 
 #content{
   margin: 10px 0 80px 0;
+
+  @include media($mobile){
+    margin: 0;
+  }
 }
 
 .main-content{
@@ -417,6 +426,9 @@ nav{
     float: none;
     margin: 0 auto;
     width: auto;
+  }
+  @include media($mobile){
+    padding: 0 4px;
   }
 }
 #sidebar{
@@ -506,11 +518,25 @@ nav{
     line-height: 1.15em;
     margin: 0 0 0.15em 0;
     padding: 20px 0 10px 0;
+
+    @include media($mobile){
+      font-size: em(32);
+      line-height: 1em;
+      margin: 0;
+      padding: em(10) 0;
+    }
   }
 
   &.single{
     .title{
       font-size: em(38);
+
+      @include media($mobile){
+        font-size: em(32);
+      }
+      @include media($mobile-4){
+        font-size: em(24);
+      }
     }
 
   }
@@ -544,6 +570,12 @@ nav{
     .meta{
       border-top: 4px solid #e1e5e1;
       border-bottom: 4px solid #e1e5e1;
+
+      @include media($mobile){
+        p{
+          line-height: 1em;
+        }
+      }
     }
   }
 
@@ -551,6 +583,12 @@ nav{
     .player{
       margin: 0 auto;
       max-width: 100%;
+    }
+  }
+
+  .picture{
+    img{
+      display: block;
     }
   }
 
@@ -629,6 +667,11 @@ nav{
     border-top: 2px solid #e1e5e1;
     display: inline-block;
     padding: 10px;
+
+    @include media($mobile){
+      display: block;
+      text-align: center;
+    }
   }
 }
 
@@ -644,12 +687,22 @@ nav{
     border-top: 2px solid #e1e5e1;
     display: inline-block;
     padding: 10px;
+
+    @include media($mobile){
+      display: block;
+      text-align: center;
+    }
   }
 
   a{
     color: #fff;
     padding: 10px;
     @include transition(all 0.3s $ease-in-cubic);
+
+    @include media($mobile){
+      padding: 4px 6px;
+      margin: 4px;
+    }
 
     &:hover{
       @include transform(translateY(-4px));
@@ -725,6 +778,9 @@ section{
       float: none;
       margin: 0 auto;
       width: auto;
+    }
+    @include media($mobile){
+      height: 322px
     }
 
     &:nth-child(3n){
