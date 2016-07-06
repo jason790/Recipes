@@ -22,8 +22,14 @@ def search(request):
             'title': 'Search Vegan Healthy Recipes'
         }
         return HttpResponse(template.render(context, request))
+    else:
+        # put a limit on the length of the term
+        term = term[:40]
 
     # save the term in the database
+    search, created = Search.objects.get_or_create(term=term)
+    search.searches = search.searches+1
+    search.save()
 
     # look for the term in the database
     query = """
