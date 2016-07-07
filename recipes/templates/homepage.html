@@ -2,8 +2,17 @@
 {% block content %}
 <div id="banner">
   <div class="container">
+    <a href="/recipes">
+      <img src="{% static 'images/banner_stream.jpg' %}" alt="{{title}}" title="{{title}}" />
+    </a>
+  </div>
+</div>
+<div id="banner">
+  <div class="container">
     <a href="http://www.pesachisaholiday.com/recipes">
+      {% placeholder 'banner_picture' or %}
       <img src="{% static 'images/banner_stream.jpg' %}" />
+      {% endplaceholder %}
     </a>
   </div>
 </div>
