@@ -160,6 +160,7 @@ INSTALLED_APPS = [
     'subscribers',
     'products',
     'search',
+    'programs',
 ]
 
 LANGUAGES = (
