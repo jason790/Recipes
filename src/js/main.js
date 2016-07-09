@@ -250,14 +250,14 @@ var widgetProgramEnrollmentFormComponent = React.createClass({
   render(){
     return (
       <div>
-        
+
       </div>
     );
   }
 });
 var widgetProgramEnrollmentForm = document.getElementById("widgetProgramEnrollmentForm");
 if (!!widgetProgramEnrollmentForm){
-  ReactDom.render(
+  ReactDOM.render(
     <widgetProgramEnrollmentFormComponent />,
     widgetProgramEnrollmentForm
   );

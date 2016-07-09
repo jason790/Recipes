@@ -292,6 +292,6 @@ var widgetProgramEnrollmentFormComponent = React.createClass({
 });
 var widgetProgramEnrollmentForm = document.getElementById("widgetProgramEnrollmentForm");
 if (!!widgetProgramEnrollmentForm) {
-  ReactDom.render(React.createElement("widgetProgramEnrollmentFormComponent", null), widgetProgramEnrollmentForm);
+  ReactDOM.render(React.createElement("widgetProgramEnrollmentFormComponent", null), widgetProgramEnrollmentForm);
 }
 //# sourceMappingURL=main.js.map
