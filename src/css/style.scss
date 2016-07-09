@@ -40,8 +40,9 @@ $mobile-4: new-breakpoint(max-width 320px 4);
 //      Rating
 //      Sharing
 //    Related Stories
-//    Pagination
+//    Programs
 //    Search Results
+//    Pagination
 //    Footer
 //    Forms
 //      Registration
@@ -811,6 +812,20 @@ section{
       color: #6a6b6a;
       text-align: center;
     }
+  }
+
+}
+
+//
+// Programs
+//
+.program-container{
+  font-size: 1.25em;
+  margin: 0 auto;
+  max-width: 800px;
+
+  ul{
+    list-style-type: disc;
   }
 
 }
