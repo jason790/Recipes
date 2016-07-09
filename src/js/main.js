@@ -247,6 +247,13 @@ var widgetProgramEnrollmentFormComponent = React.createClass({
     });
 
   },
+  render(){
+    return (
+      <div>
+        
+      </div>
+    );
+  }
 });
 var widgetProgramEnrollmentForm = document.getElementById("widgetProgramEnrollmentForm");
 if (!!widgetProgramEnrollmentForm){

@@ -285,6 +285,9 @@ var widgetProgramEnrollmentFormComponent = React.createClass({
       email: "",
       submit: "Sent"
     });
+  },
+  render: function render() {
+    return React.createElement("div", null);
   }
 });
 var widgetProgramEnrollmentForm = document.getElementById("widgetProgramEnrollmentForm");
