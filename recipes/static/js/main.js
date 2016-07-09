@@ -248,4 +248,47 @@ var SearchForm = document.getElementById("SearchForm1");
 if (!!SearchForm) {
   ReactDOM.render(React.createElement(SearchFormComponent, { term: "", url: "/search" }), SearchForm);
 }
+
+// The program enrollment form
+var widgetProgramEnrollmentFormComponent = React.createClass({
+  displayName: "widgetProgramEnrollmentFormComponent",
+  handleSubmittion: function handleSubmittion(e) {
+    e.preventDefault();
+    var name = this.state.name.trim();
+    var email = this.state.email.trim();
+
+    // make sure all the field are filled out
+    if (!name || !email) {
+      return false;
+    }
+    this.setState({
+      submit: "Sending..."
+    });
+
+    // send request
+    $.ajax({
+      url: this.props.url,
+      dataType: "json",
+      // cache: false,
+      method: "POST",
+      data: {
+        name: name,
+        email: email
+      },
+      success: function success(data) {},
+      error: function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+    this.setState({
+      name: "",
+      email: "",
+      submit: "Sent"
+    });
+  }
+});
+var widgetProgramEnrollmentForm = document.getElementById("widgetProgramEnrollmentForm");
+if (!!widgetProgramEnrollmentForm) {
+  ReactDom.render(React.createElement("widgetProgramEnrollmentFormComponent", null), widgetProgramEnrollmentForm);
+}
 //# sourceMappingURL=main.js.map
