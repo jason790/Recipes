@@ -35,21 +35,39 @@ def index(request):
             AND wp_posts.post_status = %(post_status)s
         ORDER BY
             wp_posts.post_date_gmt DESC
-        LIMIT 12
-        OFFSET %(page)s
+        LIMIT %(limit)s
+        OFFSET %(offset)s
     """
 
-    page = int(request.GET.get('page', '1'))
+    page = int(request.GET.get('page', '0'))
     recipes = WPPost.objects.raw(query, {
         "post_status": "publish",
-        "page": page
+        "limit": 8,
+        "offset": int(page*8)
     })
+
+    # Count the number of pages
+    recipes_count =  WPPost.objects.filter(
+        post_type='post',
+        post_status='publish'
+    ).count()
+
+    # Check if next and previous pages exists
+    next_page = page
+    previous_page = page
+    if int(recipes_count/8) > page:
+        next_page = page+1
+    if (page-1) >= 0:
+        previous_page = page-1
 
     template = loader.get_template('recipes/list.html')
     context = {
         'title': 'Easy Healthy Recipes',
         'recipes': recipes,
-        'page': page
+        'recipes_count': recipes_count,
+        'next_page': next_page,
+        'previous_page': previous_page,
+        'page': str(page)
     }
 
     return HttpResponse(template.render(context, request))

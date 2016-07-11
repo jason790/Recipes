@@ -29,31 +29,31 @@
       <nav class="pagination">
         <ul>
           <li class="prev">
-              {% if page == 1 %}
-              <span class="page-numbers current">{{page}}</span>
+              {% if previous_page == page %}
+              <span class="page-numbers current">Previous</span>
               {% else %}
-              <a class="page-numbers" href="/recipes/{{page}}">Previous</a>
+              <a class="page-numbers" href="/recipes?page={{ previous_page }}">Previous</a>
               {% endif %}
           </li>
           <li>
             <ul>
-              {% for i in '234' %}
+              {% for i in '1234' %}
                 <li>
-                  {% ifequal i page %}
+                  {% if i == page %}
                   <span class="page-numbers current">{{i}}</span>
                   {% else %}
-                  <a class="page-numbers" href="/recipes/?page={{i}}">{{i}}</a>
-                  {% endifequal %}
+                  <a class="page-numbers" href="/recipes?page={{ i }}">{{i}}</a>
+                  {% endif %}
                 </li>
               {% endfor %}
             </ul>
           </li>
           <li class="next">
-            {% if page > 3 %}
-            <span class="page-numbers current">{{page}}</span>
+            {% if next_page == page %}
+            <span class="page-numbers current">Next</span>
             {% else %}
             <li class="page-numbers">
-              <a class="next page-numbers" href="/recipes/?page={{ 1 }}">Next</a>
+              <a class="next page-numbers" href="/recipes?page={{ next_page }}">Next</a>
             </li>
             {% endif %}
           </li>
