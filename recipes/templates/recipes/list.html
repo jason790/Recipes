@@ -29,7 +29,7 @@
       <nav class="pagination">
         <ul>
           <li class="prev">
-              {% if previous_page == page %}
+              {% if previous_page == 0 %}
               <span class="page-numbers current">Previous</span>
               {% else %}
               <a class="page-numbers" href="/recipes?page={{ previous_page }}">Previous</a>
