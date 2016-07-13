@@ -45,7 +45,21 @@
         </div>
         <nav class="menu">
           <ul>
-            {% show_menu 0 0 100 100 %}
+            <li>
+              <a href="/search">Search</a>
+            </li>
+            <li>
+              <a href="/recipes">Recipes</a>
+            </li>
+            <li>
+              <a href="/live">Live</a>
+            </li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/contact">Contact</a>
+            </li>
           </ul>
         </nav>
         <div class="search-menu">
@@ -242,6 +256,7 @@
     <script src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'lib/react/react.js' %}"></script>
     <script src="{% static 'lib/react/react-dom.js' %}"></script>
+    <script src="{% static 'lib/react-select/dist/react-select.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
     {% else %}
     <script src="{% static 'js/app.js' %}"></script>
