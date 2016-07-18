@@ -1,0 +1,6 @@
+[Unit]
+description = "Run the web app"
+
+[Service]
+Environment=env/bin/activate
+ExecStart=/env/bin/python3 manage.py runserver 0.0.0.0:$PORT
