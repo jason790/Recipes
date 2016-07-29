@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponse
+from django.http import JsonResponse
+from django.core.serializers import serialize
 from django.template import loader
 
 from react import jsx
@@ -41,3 +43,19 @@ def search(request):
     }
 
     return HttpResponse(template.render(context, request))
+
+# For client side search
+def autocomplete(request):
+    """
+    Client side search
+    """
+    # products = Product.objects.order_by('created_at')[:6]
+    term = request.GET.get('q', None)
+    page = int(request.GET.get('page', '0'))
+    if term == None:
+        return JsonResponse(dict(data=str()))
+
+    entries = Search.find(term, page)
+
+    return JsonResponse(dict(data=serialize('json', entries)))
+    # return JsonResponse(dict(data=serialize("json", subscribers)))

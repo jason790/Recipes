@@ -22,7 +22,10 @@ class Search(models.Model):
             RIGHT JOIN
                 (
                     SELECT
-                        m.post_id,m.meta_id,t.meta_key,t.meta_value
+                        m.post_id,
+                        m.meta_id,
+                        t.meta_key,
+                        t.meta_value
                     FROM wp_postmeta AS t
                         LEFT JOIN wp_postmeta AS m
                         ON m.meta_value = t.post_id
