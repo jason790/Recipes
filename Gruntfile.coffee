@@ -124,4 +124,5 @@ module.exports = (grunt) ->
       globals: {}
 
   grunt.registerTask "dist", ["babel", "webpack", "sass", "concat:dev", "cssmin", "uglify", "copy:main"]
-  grunt.registerTask "default", ["babel", "webpack", "concat:dev", "copy", "watch"]
+  grunt.registerTask "design", ["concat:dev", "copy", "watch"]
+  grunt.registerTask "default", ["sass", "babel", "webpack", "concat:dev", "copy", "watch"]

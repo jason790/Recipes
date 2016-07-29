@@ -13,8 +13,8 @@ class Search(models.Model):
                 ID,
                 post_title,
                 post_status,
-                thumbnail.meta_key,
-                thumbnail.meta_value,
+                CONCAT('http://www.pesachisaholiday.com/assets/uploads/',
+                    thumbnail.meta_value) AS picture,
                 MATCH (post_title) AGAINST (%(term)s) AS title_score,
                 MATCH (post_excerpt) AGAINST (%(term)s) AS excerpt_score,
                 MATCH (post_content) AGAINST (%(term)s) AS content_score
@@ -49,9 +49,10 @@ class Search(models.Model):
             OFFSET %(page)s
         """
         entries = WPPost.objects.raw(query, {
-            "post_status": "publish",
-            "page": page,
-            "term": term
+            'post_status': 'publish',
+            'page': page,
+            'term': term,
+            'picture': 'picture'
         })
 
         return entries

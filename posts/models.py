@@ -46,6 +46,7 @@ class WPPost(models.Model):
     link = models.CharField(db_column='guid', max_length=255)
     slug = models.CharField(db_column='post_name', max_length=200)
     description = models.TextField(db_column='post_excerpt')
+    picture = models.CharField(db_column='picture', max_length=255)
     body = models.TextField(db_column='post_content')
 
     post_author = models.BigIntegerField()

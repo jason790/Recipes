@@ -25,7 +25,12 @@
       {%for entry in entries%}
       <div class="entry">
         <a href="/recipes/{{entry.slug}}">
-          <strong>{{entry.title}}</strong>
+          <div class="picture">
+            <img alt="{{entry.title}}" title="{{entry.title}}" src="{{entry.picture}}" />
+          </div>
+          <div class="details">
+            <strong class="title">{{entry.title}}</strong>
+          </div>
         </a>
       </div>
       {%endfor%}

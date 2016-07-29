@@ -835,16 +835,26 @@ section{
 //
 .entries{
   margin: 20px auto;
-  max-width: 520px;
+  max-width: 820px;
 
   .entry{
+    background: #fff;
     margin: 0 0 4px 0;
+    @include clearfix;
 
     a{
-      background: #fff;
+      @include clearfix;
       display: block;
       padding: 10px 4px;
     }
+  }
+  .title{
+    font-size: em(24);
+  }
+  .picture{
+    float: left;
+    margin: 0 1.25em 0 0;
+    max-width: 120px;
   }
 }
 

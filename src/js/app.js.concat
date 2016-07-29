@@ -56,325 +56,62 @@ return o.call(this,e,t,n,r)}var o=e(103),i={deltaX:function(e){return"deltaX"in 
  *
  */
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e(require("react"));else if("function"==typeof define&&define.amd)define(["react"],e);else{var f;f="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,f.ReactDOM=e(f.React)}}(function(e){return e.__SECRET_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED});
-"use strict";
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
 
-var _reactAutosuggest = require("react-autosuggest");
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
 
-var _reactAutosuggest2 = _interopRequireDefault(_reactAutosuggest);
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
 
-// menu
-var NavigationMenu = React.createClass({
-  displayName: "NavigationMenu",
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 
-  getInitialState: function getInitialState() {
-    return {
-      opened: false,
-      menu: "closed"
-    };
-  },
-  handleClick: function handleClick() {
-    var menuState = !this.state.opened ? "opened" : "closed";
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
 
-    // handle menu element
-    document.getElementById("top").className = "navbar " + menuState;
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
 
-    this.setState({
-      opened: !this.state.opened,
-      menu: menuState
-    });
-  },
-  render: function render() {
-    var text = this.state.opened ? "opened" : "closed";
-    return React.createElement(
-      "button",
-      { onClick: this.handleClick, className: this.state.menu },
-      React.createElement(
-        "i",
-        { className: "fa fa-bars", "aria-hidden": "true" },
-        " "
-      )
-    );
-  }
-});
 
-var topMenuToggle = document.getElementById("topMenuToggle");
-if (topMenuToggle) {
-  ReactDOM.render(React.createElement(NavigationMenu, null), topMenuToggle);
-}
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
 
-// subscription
-var SubscriptionFormComponent = React.createClass({
-  displayName: "SubscriptionFormComponent",
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
 
-  getInitialState: function getInitialState() {
-    return {
-      disabled: false,
-      submit: "Subscribe",
-      url: this.props.url
-    };
-  },
-  handleNameChange: function handleNameChange(e) {
-    this.setState({
-      name: e.target.value
-    });
-  },
-  handleEmailChange: function handleEmailChange(e) {
-    this.setState({
-      email: e.target.value
-    });
-  },
-  handleSubmittion: function handleSubmittion(e) {
-    e.preventDefault();
-    var name = this.state.name.trim();
-    var email = this.state.email.trim();
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
 
-    // make sure all the field are filled out
-    if (!name || !email) {
-      return false;
-    }
-    this.setState({
-      submit: "Sending..."
-    });
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports) {
 
-    // send request
-    $.ajax({
-      url: this.props.url,
-      dataType: "json",
-      // cache: false,
-      method: "POST",
-      data: {
-        name: name,
-        email: email
-      },
-      success: function success(data) {},
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-    this.setState({
-      name: "",
-      email: "",
-      submit: "Sent"
-    });
-  },
-  render: function render() {
-    return React.createElement(
-      "div",
-      null,
-      React.createElement(
-        "h3",
-        { "class": "title" },
-        "Subscribe To Our Newsletter"
-      ),
-      React.createElement(
-        "p",
-        null,
-        "Recieve new recipes to your inbox and get notified when there is something good that happens."
-      ),
-      React.createElement(
-        "form",
-        { url: this.state.url, onSubmit: this.handleSubmittion },
-        React.createElement(
-          "fieldset",
-          null,
-          React.createElement(
-            "div",
-            { "class": "field" },
-            React.createElement("input", { type: "text", placeholder: "Full name",
-              "class": "control", disabled: false,
-              value: this.state.name, onChange: this.handleNameChange })
-          ),
-          React.createElement(
-            "div",
-            { "class": "field" },
-            React.createElement("input", { type: "email", placeholder: "username@email.com",
-              "class": "control", disabled: false,
-              value: this.state.email, onChange: this.handleEmailChange })
-          ),
-          React.createElement(
-            "div",
-            { "class": "actions" },
-            React.createElement("input", { type: "submit", value: this.state.submit })
-          )
-        )
-      )
-    );
-  }
-});
+	/* WEBPACK VAR INJECTION */(function(__dirname) {module.exports = {
+	  entry: "src/js/main.babel",
+	  output: {
+	    path: __dirname+"/recipes/static/js/",
+	    filename: "bundle-2.js",
+	    publicPath: "/static/js/"
+	  }
+	}
 
-// render
-var widgetSubscriptionForm = document.getElementById("widgetSubscriptionForm");
-if (!!widgetSubscriptionForm) {
-  ReactDOM.render(React.createElement(SubscriptionFormComponent, { name: "", email: "", url: "/api/v1/subscribers/create.json" }), widgetSubscriptionForm);
-}
+	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
-var SearchFormComponent = React.createClass({
-  displayName: "SearchFormComponent",
-  getInitialState: function getInitialState() {
-    return {
-      disabled: false,
-      term: this.props.term,
-      submit: "Search",
-      value: "search"
-    };
-  },
-  handleTermChange: function handleTermChange(e) {
-    this.setState({
-      term: e.target.value
-    });
-  },
-  getSearches: function getSearches() {
-    return ["Name", "Name 2", "Recipes", "Healthy", "Vegan", "Fruits"];
-  },
-  matchSearchToTerm: function matchSearchToTerm() {
-    return true;
-  },
-  sortSearches: function sortSearches() {
-    return getSearches();
-  },
-  handleSubmittion: function handleSubmittion(e) {
-    e.preventDefault();
-    var name = this.state.name.trim();
-    var email = this.state.email.trim();
-
-    // make sure all the field are filled out
-    if (!name || !email) {
-      return false;
-    }
-    this.setState({
-      submit: "Sending...",
-      url: this.props.url
-    });
-
-    // send request
-    $.ajax({
-      url: this.props.url,
-      dataType: "json",
-      // cache: false,
-      method: "POST",
-      data: {
-        name: name,
-        email: email
-      },
-      success: function success(data) {},
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-    this.setState({
-      "searchInput": "Type something",
-      "value": "Type something to search",
-      submit: "Sent"
-    });
-  },
-
-  render: function render() {
-    var _this = this;
-
-    return React.createElement(
-      "div",
-      { className: "search-form" },
-      React.createElement(
-        "form",
-        { action: this.state.url, itemprop: "potentialAction",
-          itemscope: true, itemtype: "http://schema.org/SearchAction",
-          onSubmit: this.handleSubmittion },
-        React.createElement(
-          "fieldset",
-          null,
-          React.createElement(
-            "label",
-            { htmlFor: "q" },
-            "Search The Website"
-          ),
-          React.createElement("input", {
-            type: "text",
-            name: "q",
-            ref: "value",
-            value: this.state.value,
-            onChange: function onChange(event, value) {
-              return _this.setState({ value: value });
-            },
-            onSelect: function onSelect(value) {
-              return _this.setState({ value: value });
-            },
-            id: "q",
-            autocomplete: "off",
-            placeholder: "Healthy, sweet, etc.",
-            maxlength: "40",
-            itemprop: "query-input"
-          }),
-          React.createElement(
-            "button",
-            { type: "submit", name: "submit" },
-            "Search"
-          )
-        ),
-        React.createElement(
-          "fieldset",
-          null,
-          React.createElement(_reactAutosuggest2.default, { suggestions: getSearches,
-            onSuggestionsUpdateRequested: this.onSuggestionsUpdateRequested,
-            getSuggestionValue: getSearches,
-            renderSuggestion: renderSuggestion,
-            inputProps: inputProps })
-        )
-      )
-    );
-  }
-});
-
-// render
-var SearchForm = document.getElementById("SearchForm");
-if (!!SearchForm) {
-  ReactDOM.render(React.createElement(SearchFormComponent, { term: "", url: "/search" }), SearchForm);
-}
-
-// The program enrollment form
-var widgetProgramEnrollmentFormComponent = React.createClass({
-  displayName: "widgetProgramEnrollmentFormComponent",
-  handleSubmittion: function handleSubmittion(e) {
-    e.preventDefault();
-    var name = this.state.name.trim();
-    var email = this.state.email.trim();
-
-    // make sure all the field are filled out
-    if (!name || !email) {
-      return false;
-    }
-    this.setState({
-      submit: "Sending..."
-    });
-
-    // send request
-    $.ajax({
-      url: this.props.url,
-      dataType: "json",
-      // cache: false,
-      method: "POST",
-      data: {
-        name: name,
-        email: email
-      },
-      success: function success(data) {},
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-    this.setState({
-      name: "",
-      email: "",
-      submit: "Sent"
-    });
-  },
-  render: function render() {
-    return React.createElement("div", null);
-  }
-});
-var widgetProgramEnrollmentForm = document.getElementById("widgetProgramEnrollmentForm");
-if (!!widgetProgramEnrollmentForm) {
-  ReactDOM.render(React.createElement("widgetProgramEnrollmentFormComponent", null), widgetProgramEnrollmentForm);
-}
-//# sourceMappingURL=main.js.map
+/***/ }
+/******/ ]);
