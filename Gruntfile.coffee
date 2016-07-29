@@ -2,6 +2,7 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks("grunt-contrib-watch")
   grunt.loadNpmTasks("grunt-babel")
+  grunt.loadNpmTasks("grunt-webpack");
   grunt.loadNpmTasks("grunt-contrib-coffee")
   grunt.loadNpmTasks("grunt-contrib-uglify")
   grunt.loadNpmTasks("grunt-contrib-copy")
@@ -40,9 +41,20 @@ module.exports = (grunt) ->
           expand: true
           cwd: "src/js"
           src: "*.js"
-          dest: "recipes/static/js"
-          ext: ".js"
+          # dest: "recipes/static/js"
+          dest: "src/js"
+          ext: ".babel"
         ]
+
+    webpack:
+      main:
+        entry: "./webpack.js"
+        output:
+          path: "recipes/static/js/"
+          filename: "main.js"
+        watch: true
+        keepalive: true
+
 
     watch:
       sass:
@@ -55,6 +67,10 @@ module.exports = (grunt) ->
           "src/js/main.js"
         ]
         tasks: ["babel:jsx"]
+      webpack:
+        files: [
+          "src/js/main.babel"
+        ]
 
     concat:
       dev:
@@ -67,7 +83,8 @@ module.exports = (grunt) ->
           "recipes/static/lib/react/react-dom.min.js",
           # "bower_components/babel/browser.min.js",
           # "src/js/main.js"
-          "recipes/static/js/main.js"
+          # "recipes/static/js/main.js"
+          "src/js/bundle.js"
           # "js/react-app.js"
         ]
         dest: "src/js/app.js.concat"
@@ -106,5 +123,5 @@ module.exports = (grunt) ->
       evil: true
       globals: {}
 
-  grunt.registerTask "dist", ["babel", "sass", "concat:dev", "cssmin", "uglify", "copy:main"]
-  grunt.registerTask "default", ["babel", "concat:dev", "copy", "watch"]
+  grunt.registerTask "dist", ["babel", "webpack", "sass", "concat:dev", "cssmin", "uglify", "copy:main"]
+  grunt.registerTask "default", ["babel", "webpack", "concat:dev", "copy", "watch"]

@@ -19,6 +19,7 @@
     "milligram": "^1.1.0",
     "jquery": "^2.2.3",
     "babel": "*",
-    "react": "^15.1.0"
+    "react": "^15.1.0",
+    "react-autosuggest": "^3.8.0"
   }
 }

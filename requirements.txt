@@ -23,3 +23,5 @@ django-sekizai>=0.7
 six
 django-tinymce
 PyMySQL==0.7.5
+react
+PyReact

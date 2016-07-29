@@ -241,3 +241,7 @@ MIGRATION_MODULES = {
 #         'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
 #     }
 # }
+
+PIPELINE_COMPILERS = {
+    'react.utils.pipeline.JSXCompiler',
+}

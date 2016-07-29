@@ -58,8 +58,13 @@ return o.call(this,e,t,n,r)}var o=e(103),i={deltaX:function(e){return"deltaX"in 
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e(require("react"));else if("function"==typeof define&&define.amd)define(["react"],e);else{var f;f="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,f.ReactDOM=e(f.React)}}(function(e){return e.__SECRET_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED});
 "use strict";
 
-// menu
+var _reactAutosuggest = require("react-autosuggest");
 
+var _reactAutosuggest2 = _interopRequireDefault(_reactAutosuggest);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// menu
 var NavigationMenu = React.createClass({
   displayName: "NavigationMenu",
 
@@ -106,8 +111,6 @@ var SubscriptionFormComponent = React.createClass({
   getInitialState: function getInitialState() {
     return {
       disabled: false,
-      name: this.props.name,
-      email: this.props.email,
       submit: "Subscribe",
       url: this.props.url
     };
@@ -213,13 +216,23 @@ var SearchFormComponent = React.createClass({
     return {
       disabled: false,
       term: this.props.term,
-      submit: "Search"
+      submit: "Search",
+      value: "search"
     };
   },
   handleTermChange: function handleTermChange(e) {
     this.setState({
       term: e.target.value
     });
+  },
+  getSearches: function getSearches() {
+    return ["Name", "Name 2", "Recipes", "Healthy", "Vegan", "Fruits"];
+  },
+  matchSearchToTerm: function matchSearchToTerm() {
+    return true;
+  },
+  sortSearches: function sortSearches() {
+    return getSearches();
   },
   handleSubmittion: function handleSubmittion(e) {
     e.preventDefault();
@@ -231,7 +244,8 @@ var SearchFormComponent = React.createClass({
       return false;
     }
     this.setState({
-      submit: "Sending..."
+      submit: "Sending...",
+      url: this.props.url
     });
 
     // send request
@@ -250,51 +264,62 @@ var SearchFormComponent = React.createClass({
       }.bind(this)
     });
     this.setState({
-      name: "",
-      email: "",
+      "searchInput": "Type something",
+      "value": "Type something to search",
       submit: "Sent"
     });
   },
 
   render: function render() {
+    var _this = this;
+
     return React.createElement(
       "div",
-      null,
-      React.createElement(
-        "h3",
-        { "class": "title" },
-        "Subscribe To Our Newsletter"
-      ),
-      React.createElement(
-        "p",
-        null,
-        "Recieve new recipes to your inbox and get notified when there is something good that happens."
-      ),
+      { className: "search-form" },
       React.createElement(
         "form",
-        { url: this.state.url, onSubmit: this.handleSubmittion },
+        { action: this.state.url, itemprop: "potentialAction",
+          itemscope: true, itemtype: "http://schema.org/SearchAction",
+          onSubmit: this.handleSubmittion },
         React.createElement(
           "fieldset",
           null,
           React.createElement(
-            "div",
-            { "class": "field" },
-            React.createElement("input", { type: "text", placeholder: "Full name",
-              "class": "control", disabled: false,
-              value: this.state.name, onChange: this.handleNameChange })
+            "label",
+            { htmlFor: "q" },
+            "Search The Website"
           ),
+          React.createElement("input", {
+            type: "text",
+            name: "q",
+            ref: "value",
+            value: this.state.value,
+            onChange: function onChange(event, value) {
+              return _this.setState({ value: value });
+            },
+            onSelect: function onSelect(value) {
+              return _this.setState({ value: value });
+            },
+            id: "q",
+            autocomplete: "off",
+            placeholder: "Healthy, sweet, etc.",
+            maxlength: "40",
+            itemprop: "query-input"
+          }),
           React.createElement(
-            "div",
-            { "class": "field" },
-            React.createElement("input", { type: "email", placeholder: "username@email.com",
-              "class": "control", disabled: false,
-              value: this.state.email, onChange: this.handleEmailChange })
-          ),
-          React.createElement(
-            "div",
-            { "class": "actions" },
-            React.createElement("input", { type: "submit", value: this.state.submit })
+            "button",
+            { type: "submit", name: "submit" },
+            "Search"
           )
+        ),
+        React.createElement(
+          "fieldset",
+          null,
+          React.createElement(_reactAutosuggest2.default, { suggestions: getSearches,
+            onSuggestionsUpdateRequested: this.onSuggestionsUpdateRequested,
+            getSuggestionValue: getSearches,
+            renderSuggestion: renderSuggestion,
+            inputProps: inputProps })
         )
       )
     );
@@ -302,7 +327,7 @@ var SearchFormComponent = React.createClass({
 });
 
 // render
-var SearchForm = document.getElementById("SearchForm1");
+var SearchForm = document.getElementById("SearchForm");
 if (!!SearchForm) {
   ReactDOM.render(React.createElement(SearchFormComponent, { term: "", url: "/search" }), SearchForm);
 }

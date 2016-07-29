@@ -1,5 +1,10 @@
 "use strict";
 
+import Autosuggest from "react-autosuggest";
+
+console.log(Autosuggest);
+console.log(Autosuggest);
+
 // menu
 var NavigationMenu = React.createClass({
   getInitialState: function(){
@@ -40,8 +45,6 @@ var SubscriptionFormComponent = React.createClass({
   getInitialState: function(){
     return {
       disabled: false,
-      name: this.props.name,
-      email: this.props.email,
       submit: "Subscribe",
       url: this.props.url
     };
@@ -131,13 +134,30 @@ var SearchFormComponent = React.createClass({
     return {
       disabled: false,
       term: this.props.term,
-      submit: "Search"
+      submit: "Search",
+      value: "search",
     };
   },
   handleTermChange(e){
     this.setState({
       term: e.target.value
     })
+  },
+  getSearches(){
+    return [
+      "Name",
+      "Name 2",
+      "Recipes",
+      "Healthy",
+      "Vegan",
+      "Fruits",
+    ];
+  },
+  matchSearchToTerm(){
+    return true;
+  },
+  sortSearches(){
+    return getSearches();
   },
   handleSubmittion(e){
     e.preventDefault();
@@ -149,7 +169,8 @@ var SearchFormComponent = React.createClass({
       return false;
     }
     this.setState({
-      submit: "Sending..."
+      submit: "Sending...",
+      url: this.props.url
     });
 
     // send request
@@ -169,39 +190,49 @@ var SearchFormComponent = React.createClass({
       }.bind(this)
     });
     this.setState({
-      name: "",
-      email: "",
+      "searchInput": "Type something",
+      "value": "Type something to search",
       submit: "Sent"
     });
 
   },
   render: function(){
-    return <div>
-      <h3 class="title">Subscribe To Our Newsletter</h3>
-      <p>Recieve new recipes to your inbox and get notified when there is something good that happens.</p>
-      <form url={this.state.url} onSubmit={this.handleSubmittion}>
+    return <div className="search-form">
+      <form action={this.state.url} itemprop="potentialAction"
+        itemscope itemtype="http://schema.org/SearchAction"
+        onSubmit={this.handleSubmittion}>
         <fieldset>
-          <div class="field">
-            <input type="text" placeholder="Full name"
-            class="control" disabled={false}
-            value={this.state.name} onChange={this.handleNameChange} />
-          </div>
-          <div class="field">
-            <input type="email" placeholder="username@email.com"
-            class="control" disabled={false}
-            value={this.state.email} onChange={this.handleEmailChange} />
-          </div>
-          <div class="actions">
-            <input type="submit" value={this.state.submit} />
-          </div>
+          <label htmlFor="q">Search The Website</label>
+          <input
+            type="text"
+            name="q"
+            ref="value"
+            value={this.state.value}
+            onChange={(event, value) => this.setState({ value })}
+            onSelect={value => this.setState({ value })}
+            id="q"
+            autocomplete="off"
+            placeholder="Healthy, sweet, etc."
+            maxlength="40"
+            itemprop="query-input"
+          />
+          <button type="submit" name="submit">Search</button>
+        </fieldset>
+        <fieldset>
+        <Autosuggest suggestions={getSearches}
+                   onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
+                   getSuggestionValue={getSearches}
+                   renderSuggestion={renderSuggestion}
+                   inputProps={inputProps} />
         </fieldset>
       </form>
+
     </div>
   }
 });
 
 // render
-var SearchForm = document.getElementById("SearchForm1");
+var SearchForm = document.getElementById("SearchForm");
 if (!!SearchForm){
   ReactDOM.render(
     <SearchFormComponent term="" url="/search" />,

@@ -1,0 +1,15 @@
+{
+  "name": "react-autosuggest",
+  "homepage": "https://github.com/moroshko/react-autosuggest",
+  "version": "3.8.0",
+  "_release": "3.8.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.8.0",
+    "commit": "ba0c859b6dc13fd63d94f67f5f234aa89aba4afb"
+  },
+  "_source": "https://github.com/moroshko/react-autosuggest.git",
+  "_target": "^3.8.0",
+  "_originalSource": "react-autosuggest",
+  "_direct": true
+}
